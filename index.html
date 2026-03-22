@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelora – Explore Uttarakhand</title>
+    <meta name="description" content="Discover the sacred lands, serene valleys, and vibrant culture of Uttarakhand.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">Travelora</a>
+        <div class="nav-actions">
+            <a href="#explore" id="navExplore">Explore</a>
+            <button id="settingsBtn" class="btn-outline" style="border:none; padding:.45rem; font-size:1.15rem;" title="Settings"><i class="fa-solid fa-gear"></i></button>
+            <button id="loginBtn" class="btn-outline">Sign In</button>
+        </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 id="modalTitle">Sign In</h2>
+            <p class="modal-sub" id="modalSub">Welcome back to Travelora.</p>
+            <form id="loginForm">
+                <input type="email" id="authEmail" placeholder="Email" required>
+                <input type="password" id="authPassword" placeholder="Password" required minlength="6">
+                <button type="submit" id="authSubmitBtn" class="btn-solid">Sign In</button>
+            </form>
+            <p class="modal-footer" id="toggleAuthMode">
+                Don't have an account? <a href="#" style="color: var(--accent);">Sign Up</a>
+            </p>
+            <p class="modal-footer" style="margin-top:0.5rem; font-size:0.85rem;">
+                Want to be a Guide? <a href="#" id="openGuideReg" style="color: var(--accent);">Register Here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Guide Registration Modal -->
+    <div id="guideModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close" id="guideModalClose">&times;</button>
+            <h2 id="guideModalTitle">Register as Guide</h2>
+            <p class="modal-sub">Join Travelora and connect with travelers.</p>
+            <form id="guideRegForm">
+                <input type="text" id="guideName" placeholder="Full Name" required>
+                <input type="email" id="guideEmail" placeholder="Email Address" required>
+                <input type="password" id="guidePassword" placeholder="Password (min 6 chars)" required minlength="6">
+                <input type="tel" id="guidePhone" placeholder="Phone Number (+91...)" required>
+                <input type="text" id="guideLicense" placeholder="UTDB License Number" required>
+                <button type="submit" id="guideSubmitBtn" class="btn-solid">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close" id="settingsClose">&times;</button>
+            <h2 id="settingsTitle">Settings</h2>
+            
+            <div style="margin-top: 1.5rem; display:flex; justify-content:space-between; align-items:center;">
+                <label id="labelDarkMode" for="darkModeToggle" style="font-size:.95rem; font-weight:500; cursor:pointer;">Dark Mode</label>
+                <label class="theme-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="theme-slider"></span>
+                </label>
+            </div>
+            
+            <div style="margin-top: 1.5rem;">
+                <label for="languageSelect" id="labelLanguage" style="display:block; font-size:.95rem; font-weight:500; margin-bottom:.6rem;">Language</label>
+                <select id="languageSelect" style="width:100%; padding:.7rem; border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-family:inherit; outline:none; cursor:pointer;">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="bn">বাংলা (Bengali)</option>
+                    <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1 id="heroH1">Explore <span>Uttarakhand</span></h1>
+        <p id="heroP">The land of gods, mountains, and timeless beauty.</p>
+    </header>
+
+    <!-- Category Checkboxes + Grid -->
+    <section id="explore" class="section">
+        <div class="checkbox-filters">
+            <label class="checkbox-label">
+                <input type="checkbox" value="shopping" checked> <span id="filterShopping">Shopping</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" value="food" checked> <span id="filterFood">Food</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" value="spots" checked> <span id="filterSpots">Tourist Spots</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" value="temples" checked> <span id="filterTemples">Temples &amp; Monasteries</span>
+            </label>
+        </div>
+        <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- Chatbot -->
+    <div id="chatWidget">
+        <div id="chatWindow" class="chat-window hide">
+            <div class="chat-head">
+                <span id="chatTitle"><i class="fa-solid fa-robot"></i> Travelora AI</span>
+                <button id="chatClose">&times;</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="msg bot" id="chatGreeting">Namaste! Ask me about any place in Uttarakhand.</div>
+            </div>
+            <form class="chat-form" id="chatForm">
+                <input type="text" id="chatInput" placeholder="Ask something…" autocomplete="off">
+                <button type="submit"><i class="fa-solid fa-arrow-up"></i></button>
+            </form>
+        </div>
+        <button id="chatToggle" class="fab"><i class="fa-solid fa-comments"></i></button>
+    </div>
+
+    <footer>
+        <p id="footerText">&copy; 2026 Travelora · Made for Uttarakhand Tourism</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
