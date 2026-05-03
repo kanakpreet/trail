@@ -236,14 +236,53 @@ let placesData = []; // Will be populated from Firestore
 /* ═══════════════════════════════════════
    Simulated Crowd Tracker
    ═══════════════════════════════════════ */
-function getCrowdLevel() {
-    // Simulates a real-time crowd level (would be replaced by API data later)
-    const levels = [
-        { label: "Low",      color: "#16a34a", percent: Math.floor(Math.random() * 30) + 5  },
-        { label: "Moderate", color: "#f59e0b", percent: Math.floor(Math.random() * 30) + 35 },
-        { label: "High",     color: "#ef4444", percent: Math.floor(Math.random() * 30) + 70 },
-    ];
-    return levels[Math.floor(Math.random() * 3)];
+function predictCrowdLevel(place) {
+    const now = new Date();
+    const hour = now.getHours();
+    const day = now.getDay();
+    const month = now.getMonth();
+    const hash = place.title.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+    let score = 30;
+    // Time-of-day
+    if (hour >= 10 && hour <= 16) score += 20;
+    else if ((hour >= 7 && hour <= 9) || (hour >= 17 && hour <= 19)) score += 10;
+    else score -= 5;
+    // Weekend
+    if (day === 0 || day === 6) score += 15;
+    // Season
+    if (month >= 4 && month <= 5) score += 18;
+    if (month >= 8 && month <= 9) score += 12;
+    if (month === 11 || month === 0 || month === 1) score -= 8;
+    // Category patterns
+    if (place.cat === 'temples') { if (month >= 4 && month <= 9) score += 10; if (day === 0) score += 8; }
+    if (place.cat === 'spots') { if (month >= 4 && month <= 6) score += 12; }
+    if (place.cat === 'food') { if (hour >= 12 && hour <= 14) score += 15; if (hour >= 19 && hour <= 21) score += 12; }
+    if (place.cat === 'shopping') { if (hour >= 11 && hour <= 18) score += 8; if (day === 0 || day === 6) score += 10; }
+    // Rating-based popularity
+    score += Math.round((place.rating - 4.0) * 10);
+    // Per-place deterministic jitter
+    score += (hash % 13) - 6;
+    score = Math.max(5, Math.min(95, score));
+    let label, color;
+    if (score < 35) { label = "Low"; color = "#16a34a"; }
+    else if (score < 65) { label = "Moderate"; color = "#f59e0b"; }
+    else { label = "High"; color = "#ef4444"; }
+    return { label, color, percent: score };
+}
+
+/* ═══════════════════════════════════════
+   Helper for Images
+   ═══════════════════════════════════════ */
+function getImageForCategory(cat, title) {
+    const t = title.toLowerCase();
+    if (t.includes('auli') || t.includes('roopkund') || t.includes('ski')) return 'images/auli.png';
+    if (t.includes('corbett') || t.includes('safari')) return 'images/safari.png';
+    if (cat === 'temples') return 'images/temple.png';
+    if (cat === 'spots') return 'images/hero.png';
+    // Fallbacks
+    if (cat === 'shopping') return 'images/hero.png';
+    if (cat === 'food') return 'images/auli.png';
+    return 'images/hero.png';
 }
 
 /* ═══════════════════════════════════════
@@ -252,8 +291,8 @@ function getCrowdLevel() {
 const grid = document.getElementById('grid');
 
 function render(selectedCats) {
-    // Determine which array to render (Firestore data if ready, else empty until fetched)
-    const dataToRender = placesData.length > 0 ? placesData : [];
+    // Determine which array to render (Firestore data if ready, else local fallback)
+    const dataToRender = placesData.length > 0 ? placesData : places;
     const list = dataToRender.filter(p => selectedCats.includes(p.cat));
     if (list.length === 0) {
         const emptyMsg = i18n[savedLang] ? i18n[savedLang].emptyMsg : i18n.en.emptyMsg;
@@ -265,7 +304,7 @@ function render(selectedCats) {
     
     grid.innerHTML = list.map(p => {
         const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`;
-        const crowd = getCrowdLevel();
+        const crowd = predictCrowdLevel(p);
         
         let crowdLabel = crowd.label;
         if (crowd.label === "Low") crowdLabel = dict.crowdLow || "Low";
@@ -274,7 +313,10 @@ function render(selectedCats) {
 
         return `
         <div class="card">
-            <div class="card-icon"><i class="fa-solid ${p.icon}"></i></div>
+            <div class="card-img-container">
+                <img src="${getImageForCategory(p.cat, p.title)}" class="card-img" alt="${p.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <i class="fa-solid ${p.icon} card-fallback-icon" style="display:none;"></i>
+            </div>
             <div class="card-body">
                 <div class="meta">
                     <span>${label(p.cat, dict)}</span>
@@ -301,9 +343,14 @@ function render(selectedCats) {
                     </div>
                 </div>
 
-                <a href="${mapUrl}" target="_blank" class="dir-btn">
-                    <i class="fa-solid fa-diamond-turn-right"></i> ${dict.cardDir}
-                </a>
+                <div class="card-actions">
+                    <a href="${mapUrl}" target="_blank" class="dir-btn" data-dir-cat="${p.cat}">
+                        <i class="fa-solid fa-diamond-turn-right"></i> ${dict.cardDir}
+                    </a>
+                    <button class="trip-add-btn" data-trip-title="${p.title}">
+                        <i class="fa-solid fa-plus"></i> Add to Trip
+                    </button>
+                </div>
             </div>
         </div>`;
     }).join('');
@@ -315,7 +362,7 @@ function label(cat, dict) {
 }
 
 /* ═══════════════════════════════════════
-   Checkbox Filters
+   Checkbox Filters & Category Cards
    ═══════════════════════════════════════ */
 const checkboxes = document.querySelectorAll('.checkbox-filters input[type="checkbox"]');
 
@@ -325,6 +372,23 @@ function getSelected() {
 
 checkboxes.forEach(cb => {
     cb.addEventListener('change', () => render(getSelected()));
+});
+
+// Category cards interactivity
+document.querySelectorAll('.category-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const cat = card.getAttribute('data-category');
+        if (cat) {
+            // Uncheck all except the selected one
+            checkboxes.forEach(cb => {
+                cb.checked = (cb.value === cat);
+            });
+            render(getSelected());
+            
+            // Scroll to the explore section smoothly
+            document.getElementById('explore').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 });
 
 // Initial render (will be empty until DB loads)
@@ -370,6 +434,9 @@ onSnapshot(placesRef, async (snapshot) => {
 
         render(getSelected());
     }
+}, (error) => {
+    console.warn("Firestore permission error, using local data:", error.message);
+    render(getSelected());
 });
 
 // Utility to seed initial data (Run only once if DB is empty)
@@ -493,7 +560,6 @@ guideRegForm.addEventListener('submit', async (e) => {
     const email = document.getElementById('guideEmail').value;
     const password = document.getElementById('guidePassword').value;
     const phone = document.getElementById('guidePhone').value;
-    const license = document.getElementById('guideLicense').value;
 
     const btn = document.getElementById('guideSubmitBtn');
     btn.textContent = 'Registering...';
@@ -510,7 +576,6 @@ guideRegForm.addEventListener('submit', async (e) => {
             name: name,
             email: email,
             phone: phone,
-            license: license,
             role: 'guide',
             registeredAt: new Date().toISOString()
         });
@@ -614,14 +679,28 @@ document.getElementById('chatClose').addEventListener('click', () => chatWindow.
 
 const chatBody = document.getElementById('chatBody');
 
-document.getElementById('chatForm').addEventListener('submit', e => {
+document.getElementById('chatForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const input = document.getElementById('chatInput');
     const text = input.value.trim();
     if (!text) return;
     addMsg(text, 'user');
     input.value = '';
-    setTimeout(() => { addMsg(botReply(text), 'bot'); }, 600);
+    // Track chatbot topic
+    const lt = text.toLowerCase();
+    if (/shop|market|buy/i.test(lt)) trackInteraction('shopping', 'chat');
+    if (/food|eat|restaurant|cafe/i.test(lt)) trackInteraction('food', 'chat');
+    if (/temple|monastery|shrine|dham/i.test(lt)) trackInteraction('temples', 'chat');
+    if (/trek|hike|valley|lake|park|waterfall|ski/i.test(lt)) trackInteraction('spots', 'chat');
+    // Show typing indicator
+    const typingEl = document.createElement('div');
+    typingEl.className = 'typing-indicator';
+    typingEl.innerHTML = '<span></span><span></span><span></span>';
+    chatBody.appendChild(typingEl);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    const reply = await geminiReply(text);
+    typingEl.remove();
+    addMsg(reply, 'bot');
 });
 
 function addMsg(text, who) {
@@ -632,7 +711,7 @@ function addMsg(text, who) {
     chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-function botReply(q) {
+function botReplyFallback(q) {
     const t = q.toLowerCase();
     if (/kedarnath/i.test(t))        return "Kedarnath Temple sits at 3,583 m — open May to November. Prepare for a 16 km trek from Gaurikund!";
     if (/badrinath/i.test(t))        return "Badrinath is one of the Char Dhams. Best visited May–June or Sep–Oct.";
@@ -646,8 +725,390 @@ function botReply(q) {
     if (/food|eat|restaurant/i.test(t)) return "Try Chotiwala in Rishikesh for iconic vegetarian food, or Café Ivy for continental riverside dining.";
     if (/temple|monastery/i.test(t)) return "Uttarakhand is Devbhoomi! Key temples: Kedarnath, Badrinath, Har Ki Pauri. For monasteries, visit Mindrolling in Dehradun.";
     if (/trek|hike/i.test(t))        return "Popular treks: Roopkund, Chopta-Tungnath, Valley of Flowers, and Har Ki Dun. Best season: May–June & Sep–Oct.";
-    if (/crowd/i.test(t))            return "Crowd levels update every 30s in our app. For quieter visits, try early mornings or weekdays.";
+    if (/crowd/i.test(t))            return "Crowd levels are predicted using time, season, and place type. For quieter visits, try early mornings or weekdays.";
     if (/guide/i.test(t))            return "Every place card shows a local guide's contact number. Hiring local guides supports the community!";
     if (/hi|hello|hey/i.test(t))     return "Namaste! 🙏 Ask me about any place in Uttarakhand — temples, treks, food, shopping, anything!";
     return "I can help you with Uttarakhand travel — ask about places, food, temples, treks or shopping!";
 }
+
+async function geminiReply(query) {
+    const apiKey = localStorage.getItem('geminiApiKey');
+    if (!apiKey) return botReplyFallback(query);
+
+    const dataToUse = placesData.length > 0 ? placesData : places;
+    const context = dataToUse.map(p =>
+        `${p.title} [${p.cat}] — ${p.desc} (Rating: ${p.rating}, Guide: ${p.guide}, Phone: ${p.guidePhone})`
+    ).join('\n');
+
+    const systemPrompt = `You are Travelora AI, a friendly travel assistant for Uttarakhand, India. Here are places in our database:\n${context}\n\nRules: Keep responses concise (2-3 sentences). Be warm and enthusiastic. Mention guide contacts when relevant. If unrelated to Uttarakhand tourism, politely redirect.`;
+
+    try {
+        const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    system_instruction: { parts: [{ text: systemPrompt }] },
+                    contents: [{ role: 'user', parts: [{ text: query }] }],
+                    generationConfig: { maxOutputTokens: 200, temperature: 0.7 }
+                })
+            }
+        );
+        if (!response.ok) throw new Error(`API ${response.status}`);
+        const data = await response.json();
+        if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+            return data.candidates[0].content.parts[0].text.trim();
+        }
+        return botReplyFallback(query);
+    } catch (err) {
+        console.warn('Gemini fallback:', err.message);
+        return botReplyFallback(query);
+    }
+}
+
+/* ═══════════════════════════════════════
+   Gemini API Key Management
+   ═══════════════════════════════════════ */
+const geminiKeyInput = document.getElementById('geminiKeyInput');
+geminiKeyInput.value = localStorage.getItem('geminiApiKey') || '';
+geminiKeyInput.addEventListener('change', (e) => {
+    localStorage.setItem('geminiApiKey', e.target.value.trim());
+});
+
+/* ═══════════════════════════════════════
+   Interaction Tracking & Recommendations
+   ═══════════════════════════════════════ */
+function trackInteraction(category, type = 'view') {
+    const prefs = JSON.parse(localStorage.getItem('userPrefs') || '{}');
+    const weight = type === 'direction' ? 3 : type === 'trip' ? 5 : type === 'chat' ? 2 : 1;
+    prefs[category] = (prefs[category] || 0) + weight;
+    localStorage.setItem('userPrefs', JSON.stringify(prefs));
+    renderRecommendations();
+}
+
+function getRecommendations() {
+    const prefs = JSON.parse(localStorage.getItem('userPrefs') || '{}');
+    const total = Object.values(prefs).reduce((a, b) => a + b, 0);
+    if (total < 2) return [];
+    const dataToUse = placesData.length > 0 ? placesData : places;
+    return dataToUse
+        .map(p => ({ ...p, score: ((prefs[p.cat] || 0) + 1) * p.rating }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 4);
+}
+
+function renderRecommendations() {
+    const recs = getRecommendations();
+    const section = document.getElementById('recommendedSection');
+    const recGrid = document.getElementById('recGrid');
+    if (recs.length === 0) { section.style.display = 'none'; return; }
+    section.style.display = 'block';
+    const dict = i18n[savedLang] || i18n.en;
+    recGrid.innerHTML = recs.map(p => {
+        const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`;
+        const crowd = predictCrowdLevel(p);
+        let crowdLabel = crowd.label;
+        if (crowd.label === "Low") crowdLabel = dict.crowdLow || "Low";
+        if (crowd.label === "Moderate") crowdLabel = dict.crowdMod || "Moderate";
+        if (crowd.label === "High") crowdLabel = dict.crowdHigh || "High";
+        return `
+        <div class="card rec-card">
+            <div class="card-img-container">
+                <img src="${getImageForCategory(p.cat, p.title)}" class="card-img" alt="${p.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <i class="fa-solid ${p.icon} card-fallback-icon" style="display:none;"></i>
+            </div>
+            <div class="card-body">
+                <div class="meta">
+                    <span>${label(p.cat, dict)}</span>
+                    <span class="rating"><i class="fa-solid fa-star"></i> ${p.rating}</span>
+                </div>
+                <h3>${p.title}</h3>
+                <p class="desc">${p.desc}</p>
+                <div class="crowd-bar">
+                    <div class="crowd-info">
+                        <span><i class="fa-solid fa-users"></i> ${dict.cardCrowd}</span>
+                        <span class="crowd-label" style="color:${crowd.color}">${crowdLabel} (${crowd.percent}%)</span>
+                    </div>
+                    <div class="crowd-track"><div class="crowd-fill" style="width:${crowd.percent}%;background:${crowd.color}"></div></div>
+                </div>
+                <div class="card-actions">
+                    <a href="${mapUrl}" target="_blank" class="dir-btn" data-dir-cat="${p.cat}">
+                        <i class="fa-solid fa-diamond-turn-right"></i> ${dict.cardDir}
+                    </a>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+/* ═══════════════════════════════════════
+   Floating Action Buttons (Chat & Trip)
+   ═══════════════════════════════════════ */
+const chatToggle = document.getElementById('chatToggle');
+const chatWindow = document.getElementById('chatWindow');
+const chatClose = document.getElementById('chatClose');
+
+if (chatToggle && chatWindow) {
+    chatToggle.addEventListener('click', () => {
+        chatWindow.classList.toggle('hide');
+    });
+    chatClose.addEventListener('click', () => {
+        chatWindow.classList.add('hide');
+    });
+}
+
+const tripToggleBtn = document.getElementById('tripToggle');
+const tripPanel = document.getElementById('tripPanel');
+const tripCloseBtn = document.getElementById('tripClose');
+
+if (tripToggleBtn && tripPanel) {
+    // Show the button initially
+    tripToggleBtn.style.display = 'flex';
+    
+    tripToggleBtn.addEventListener('click', () => {
+        tripPanel.classList.add('show');
+    });
+    tripCloseBtn.addEventListener('click', () => {
+        tripPanel.classList.remove('show');
+    });
+}
+
+/* ═══════════════════════════════════════
+   Trip Cost Calculator API Integration
+   ═══════════════════════════════════════ */
+const costCalcModal = document.getElementById('costCalcModal');
+const openCostCalcBtn = document.getElementById('openCostCalc');
+const costCalcClose = document.getElementById('costCalcClose');
+const costCalcForm = document.getElementById('costCalcForm');
+const calcResult = document.getElementById('calcResult');
+const calcResultVal = document.getElementById('calcResultVal');
+const calcSubmitBtn = document.getElementById('calcSubmitBtn');
+
+if (openCostCalcBtn) {
+    openCostCalcBtn.addEventListener('click', () => {
+        costCalcModal.classList.add('show');
+    });
+}
+
+if (costCalcClose) {
+    costCalcClose.addEventListener('click', () => {
+        costCalcModal.classList.remove('show');
+    });
+}
+
+if (costCalcModal) {
+    costCalcModal.addEventListener('click', (e) => {
+        if (e.target === costCalcModal) costCalcModal.classList.remove('show');
+    });
+}
+
+if (costCalcForm) {
+    costCalcForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        calcSubmitBtn.textContent = 'Calculating...';
+        calcSubmitBtn.disabled = true;
+        calcResult.style.display = 'none';
+
+        const payload = {
+            source_city: document.getElementById('calcSource').value,
+            destination_city: document.getElementById('calcDest').value,
+            transport_type: document.getElementById('calcTransport').value,
+            hotel_type: document.getElementById('calcHotel').value,
+            season: document.getElementById('calcSeason').value,
+            distance_km: document.getElementById('calcDistance').value,
+            days: document.getElementById('calcDays').value,
+            people: document.getElementById('calcPeople').value
+        };
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/predict_cost', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) throw new Error(`Server returned ${response.status}`);
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Format as Indian Rupee
+                const formattedCost = new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 0
+                }).format(data.predicted_cost);
+                
+                calcResultVal.textContent = formattedCost;
+                calcResult.style.display = 'block';
+            } else {
+                alert("Error: " + (data.error || "Unknown error occurred"));
+            }
+        } catch (err) {
+            console.error("Cost Prediction Error:", err);
+            alert("Could not connect to the Cost Prediction AI. Ensure the Python backend is running.");
+        } finally {
+            calcSubmitBtn.textContent = 'Calculate Estimate';
+            calcSubmitBtn.disabled = false;
+        }
+    });
+}
+
+// Event delegation for direction clicks
+document.addEventListener('click', (e) => {
+    const dirBtn = e.target.closest('.dir-btn');
+    if (dirBtn && dirBtn.dataset.dirCat) {
+        trackInteraction(dirBtn.dataset.dirCat, 'direction');
+    }
+    const tripBtn = e.target.closest('.trip-add-btn');
+    if (tripBtn) {
+        toggleTripPlace(tripBtn.dataset.tripTitle, tripBtn);
+    }
+});
+
+renderRecommendations();
+
+/* ═══════════════════════════════════════
+   Trip Planner & Route Optimization
+   ═══════════════════════════════════════ */
+let tripPlaces = JSON.parse(localStorage.getItem('tripPlaces') || '[]');
+const tripPanel = document.getElementById('tripPanel');
+const tripToggle = document.getElementById('tripToggle');
+const tripBadge = document.getElementById('tripBadge');
+const tripBody = document.getElementById('tripBody');
+const tripFooter = document.getElementById('tripFooter');
+
+tripToggle.addEventListener('click', () => tripPanel.classList.toggle('open'));
+document.getElementById('tripClose').addEventListener('click', () => tripPanel.classList.remove('open'));
+
+function toggleTripPlace(title, btnEl) {
+    const idx = tripPlaces.findIndex(t => t.title === title);
+    if (idx > -1) {
+        tripPlaces.splice(idx, 1);
+        if (btnEl) { btnEl.classList.remove('added'); btnEl.innerHTML = '<i class="fa-solid fa-plus"></i> Add to Trip'; }
+    } else {
+        const allPlaces = placesData.length > 0 ? placesData : places;
+        const place = allPlaces.find(p => p.title === title);
+        if (place) {
+            tripPlaces.push({ title: place.title, lat: place.lat, lng: place.lng, cat: place.cat, icon: place.icon });
+            if (btnEl) { btnEl.classList.add('added'); btnEl.innerHTML = '<i class="fa-solid fa-check"></i> Added'; }
+            trackInteraction(place.cat, 'trip');
+        }
+    }
+    localStorage.setItem('tripPlaces', JSON.stringify(tripPlaces));
+    renderTripPanel();
+}
+
+function haversineDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) ** 2 +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function calculateTotalDistance(stops) {
+    let dist = 0;
+    for (let i = 1; i < stops.length; i++) {
+        dist += haversineDistance(stops[i-1].lat, stops[i-1].lng, stops[i].lat, stops[i].lng);
+    }
+    return dist;
+}
+
+function optimizeRoute(stops) {
+    if (stops.length <= 2) return { order: [...stops], distance: calculateTotalDistance(stops) };
+    // Nearest-neighbor TSP heuristic
+    const unvisited = [...stops];
+    const route = [unvisited.shift()];
+    let totalDist = 0;
+    while (unvisited.length > 0) {
+        const last = route[route.length - 1];
+        let nearestIdx = 0, minDist = Infinity;
+        unvisited.forEach((p, i) => {
+            const d = haversineDistance(last.lat, last.lng, p.lat, p.lng);
+            if (d < minDist) { minDist = d; nearestIdx = i; }
+        });
+        totalDist += minDist;
+        route.push(unvisited.splice(nearestIdx, 1)[0]);
+    }
+    return { order: route, distance: totalDist };
+}
+
+function renderTripPanel() {
+    const count = tripPlaces.length;
+    tripBadge.textContent = count;
+    tripToggle.style.display = count > 0 ? 'flex' : 'none';
+    if (count === 0) {
+        tripBody.innerHTML = '<p class="trip-empty">Add places from the cards below to plan your route.</p>';
+        tripFooter.style.display = 'none';
+        return;
+    }
+    tripFooter.style.display = 'block';
+    const totalDist = calculateTotalDistance(tripPlaces);
+    document.getElementById('tripDistance').innerHTML = `<i class="fa-solid fa-road"></i> ${totalDist.toFixed(1)} km`;
+    document.getElementById('tripStops').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${count} stops`;
+
+    tripBody.innerHTML = tripPlaces.map((p, i) => {
+        const dist = i > 0 ? haversineDistance(tripPlaces[i-1].lat, tripPlaces[i-1].lng, p.lat, p.lng).toFixed(1) : null;
+        return `
+        <div class="trip-item">
+            <span class="trip-item-num">${i + 1}</span>
+            <div class="trip-item-info">
+                <span class="trip-item-title">${p.title}</span>
+                <span class="trip-item-dist">${dist ? dist + ' km from previous' : 'Starting point'}</span>
+            </div>
+            <button class="trip-item-remove" data-remove-title="${p.title}" title="Remove">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>`;
+    }).join('');
+
+    // Google Maps multi-stop URL
+    const waypoints = tripPlaces.map(p => `${p.lat},${p.lng}`);
+    const origin = waypoints[0];
+    const destination = waypoints[waypoints.length - 1];
+    const middle = waypoints.slice(1, -1).join('|');
+    let mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
+    if (middle) mapsUrl += `&waypoints=${middle}`;
+    document.getElementById('tripMapsLink').href = mapsUrl;
+}
+
+document.getElementById('tripOptimize').addEventListener('click', () => {
+    if (tripPlaces.length < 3) { alert('Add at least 3 places to optimize!'); return; }
+    const result = optimizeRoute(tripPlaces);
+    tripPlaces = result.order;
+    localStorage.setItem('tripPlaces', JSON.stringify(tripPlaces));
+    renderTripPanel();
+    const btn = document.getElementById('tripOptimize');
+    btn.textContent = '✓ Route Optimized!';
+    setTimeout(() => { btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Optimize Route'; }, 1500);
+});
+
+tripBody.addEventListener('click', (e) => {
+    const removeBtn = e.target.closest('.trip-item-remove');
+    if (removeBtn) {
+        const title = removeBtn.dataset.removeTitle;
+        tripPlaces = tripPlaces.filter(p => p.title !== title);
+        localStorage.setItem('tripPlaces', JSON.stringify(tripPlaces));
+        const gridBtn = document.querySelector(`.trip-add-btn[data-trip-title="${title}"]`);
+        if (gridBtn) { gridBtn.classList.remove('added'); gridBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add to Trip'; }
+        renderTripPanel();
+    }
+});
+
+// Restore trip button states when grid re-renders
+function restoreTripButtonStates() {
+    tripPlaces.forEach(tp => {
+        const btn = document.querySelector(`.trip-add-btn[data-trip-title="${tp.title}"]`);
+        if (btn) { btn.classList.add('added'); btn.innerHTML = '<i class="fa-solid fa-check"></i> Added'; }
+    });
+}
+const gridObserver = new MutationObserver(() => restoreTripButtonStates());
+gridObserver.observe(grid, { childList: true });
+
+renderTripPanel();
+

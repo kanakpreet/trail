@@ -1,0 +1,1847 @@
+[
+  {
+    "id": 37,
+    "state": "Uttarakhand",
+    "district": "Dehradun",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 30.0869,
+      "longitude": 78.2676
+    },
+    "altitude_m": 372,
+    "popularity_score": 9,
+    "accessibility": "Easy",
+    "nearest_airport": {
+      "name": "Dehradun (Jolly Grant) Airport",
+      "distance_km": 20
+    },
+    "nearest_railway_station": {
+      "name": "Rishikesh / Haridwar (major)",
+      "distance_km": 0
+    },
+    "nearest_major_city": {
+      "name": "Haridwar",
+      "distance_km": 25
+    },
+    "road_connectivity": "Good roads from Haridwar, Dehradun and Delhi; frequent buses and shared vehicles.",
+    "budget_category": {
+      "accommodation_range": [
+        600,
+        1200
+      ],
+      "food_range": [
+        200,
+        400
+      ],
+      "activities_range": [
+        400,
+        1000
+      ],
+      "local_transport_range": [
+        150,
+        300
+      ],
+      "total_daily_range": [
+        1350,
+        2900
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1200,
+        3000
+      ],
+      "food_range": [
+        400,
+        800
+      ],
+      "activities_range": [
+        800,
+        1500
+      ],
+      "local_transport_range": [
+        200,
+        400
+      ],
+      "total_daily_range": [
+        2600,
+        5700
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        3000,
+        12000
+      ],
+      "food_range": [
+        700,
+        1800
+      ],
+      "activities_range": [
+        1200,
+        2500
+      ],
+      "local_transport_range": [
+        300,
+        700
+      ],
+      "total_daily_range": [
+        5200,
+        17000
+      ]
+    },
+    "trip_types": [
+      "Spiritual",
+      "Adventure",
+      "Yoga",
+      "Weekend_getaway"
+    ],
+    "primary_attractions": [
+      "Laxman Jhula and Ram Jhula areas",
+      "Ganga Aarti ghats",
+      "Beatles Ashram (Chaurasi Kutiya)",
+      "Nearby rafting stretches on Ganga"
+    ],
+    "activities_available": [
+      "Ganga Aarti participation",
+      "Yoga and meditation courses",
+      "River rafting and camping (seasonal)",
+      "Cafe hopping with Ganga views"
+    ],
+    "unique_experiences": "Yoga capital on the banks of the Ganga with both spiritual retreats and adventure rafting in one base.",
+    "hidden_gems": [
+      "Quiet riverside ashrams away from main market",
+      "Small viewpoints on trails towards waterfalls like Neer Gaddu"
+    ],
+    "best_seasons": [
+      "Winter",
+      "Spring",
+      "Post-monsoon"
+    ],
+    "avoid_seasons": [
+      "Peak monsoon for rafting safety issues; hottest May afternoons for outdoor activities"
+    ],
+    "peak_tourist_season": "October\u2013April and long weekends",
+    "off_season": "Monsoon months for adventure; shoulder weeks see fewer crowds",
+    "average_temperature": {
+      "winter": "8-22\u00b0C",
+      "summer": "24-38\u00b0C",
+      "monsoon": "22-30\u00b0C"
+    },
+    "rainfall_pattern": "North Indian monsoon pattern with heavy July\u2013August rains.",
+    "ideal_for": [
+      "Backpackers",
+      "Spiritual_seekers",
+      "Adventure_travellers",
+      "Wellness_tourists"
+    ],
+    "ideal_for_why": {
+      "Spiritual_seekers": "Many ashrams and satsangs along the river.",
+      "Adventure_travellers": "Rafting, camping and short treks nearby."
+    },
+    "special_considerations": "Some zones predominantly vegetarian and alcohol-free; rafting is seasonal and subject to river safety norms.",
+    "minimum_days": 2,
+    "ideal_days": 3,
+    "maximum_days": 5,
+    "suggested_itinerary": "Day 1: Jhula areas and Ganga Aarti; Day 2: Rafting and cafes; Day 3: Ashram or Beatles Ashram plus waterfalls/short hikes.",
+    "accommodation_types": [
+      "Ashrams",
+      "Budget guesthouses",
+      "Mid-range hotels",
+      "Luxury wellness resorts"
+    ],
+    "food_scene": "Vegetarian-heavy with many cafes offering global health foods and traditional Indian meals.",
+    "safety_rating": 8,
+    "safety_notes": "Busy yet generally safe; adventure activities should be with licensed operators.",
+    "internet_connectivity": "Good 4G and Wi\u2011Fi in most tourist areas.",
+    "mobile_network": [
+      "Jio",
+      "Airtel",
+      "Vi"
+    ],
+    "atm_availability": "Many ATMs around main market and ghats.",
+    "language_spoken": [
+      "Hindi",
+      "Garhwali",
+      "English (widely in tourism)"
+    ],
+    "permits_required": false,
+    "local_culture": "Spiritual pilgrimage town with mix of long-stay seekers and short-term tourists.",
+    "festivals_events": "Yoga festivals, Ganga-related religious festivals, and seasonal fairs.",
+    "local_customs": "Conservative dress recommended at ghats/ashrams; remove footwear at temples and some ashram areas.",
+    "shopping_highlights": [
+      "Spiritual books and items",
+      "Yoga clothing",
+      "Handicrafts"
+    ],
+    "local_cuisine_must_try": [
+      "Local thali",
+      "Street-side chaat",
+      "Cafe-style healthy bowls"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:177",
+      "web:182"
+    ],
+    "user_reviews_summary": "Popular among both backpackers and families; many stay longer than planned due to relaxed vibe.",
+    "recent_developments": "More boutique stays and upmarket wellness resorts along quieter riverbanks.",
+    "sustainability_notes": "Ganga cleanliness is crucial; avoid plastic, use designated ghats and follow local eco-guidelines.",
+    "destination_name": "Rishikesh",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 38,
+    "state": "Uttarakhand",
+    "district": "Haridwar",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 29.9457,
+      "longitude": 78.1642
+    },
+    "altitude_m": 314,
+    "popularity_score": 8,
+    "accessibility": "Easy",
+    "nearest_airport": {
+      "name": "Dehradun (Jolly Grant) Airport",
+      "distance_km": 35
+    },
+    "nearest_railway_station": {
+      "name": "Haridwar Junction",
+      "distance_km": 0
+    },
+    "nearest_major_city": {
+      "name": "Rishikesh",
+      "distance_km": 25
+    },
+    "road_connectivity": "Excellent road links from Delhi and other North Indian cities; frequent buses and trains.",
+    "budget_category": {
+      "accommodation_range": [
+        500,
+        1000
+      ],
+      "food_range": [
+        150,
+        300
+      ],
+      "activities_range": [
+        100,
+        300
+      ],
+      "local_transport_range": [
+        100,
+        200
+      ],
+      "total_daily_range": [
+        850,
+        1800
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1000,
+        2500
+      ],
+      "food_range": [
+        300,
+        600
+      ],
+      "activities_range": [
+        200,
+        400
+      ],
+      "local_transport_range": [
+        150,
+        300
+      ],
+      "total_daily_range": [
+        1650,
+        3800
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        2500,
+        8000
+      ],
+      "food_range": [
+        500,
+        1200
+      ],
+      "activities_range": [
+        400,
+        800
+      ],
+      "local_transport_range": [
+        200,
+        400
+      ],
+      "total_daily_range": [
+        3600,
+        10400
+      ]
+    },
+    "trip_types": [
+      "Pilgrimage",
+      "Spiritual",
+      "Gateway_destination"
+    ],
+    "primary_attractions": [
+      "Har Ki Pauri ghat",
+      "Ganga Aarti",
+      "Temples along riverfront",
+      "Local bazaars"
+    ],
+    "activities_available": [
+      "Taking dips in Ganga at designated ghats",
+      "Attending evening Aarti",
+      "Temple visits",
+      "Shopping for religious items and sweets"
+    ],
+    "unique_experiences": "Major Hindu pilgrimage city where the Ganga enters plains, with large daily Aarti and Kumbh Mela at intervals.",
+    "hidden_gems": [
+      "Quieter ghats slightly away from Har Ki Pauri",
+      "Old city lanes with traditional shops"
+    ],
+    "best_seasons": [
+      "Winter",
+      "Post-monsoon"
+    ],
+    "avoid_seasons": [
+      "Peak summer heat and extremely crowded festival days unless specifically targeting them"
+    ],
+    "peak_tourist_season": "Festivals (Kumbh, Kanwar Yatra periods, major Hindu holidays) and winter months",
+    "off_season": "Very hot months; some monsoon weeks",
+    "average_temperature": {
+      "winter": "7-22\u00b0C",
+      "summer": "24-42\u00b0C",
+      "monsoon": "22-32\u00b0C"
+    },
+    "rainfall_pattern": "North Indian monsoon; occasional flood advisories along ghats.",
+    "ideal_for": [
+      "Pilgrims",
+      "Families_on_religious_trips",
+      "First_time_Ganga_visitors"
+    ],
+    "ideal_for_why": {
+      "Pilgrims": "Important Ganga and Kumbh site with many ashrams and temples.",
+      "First_time_Ganga_visitors": "Iconic Aarti and easy river access at multiple ghats."
+    },
+    "special_considerations": "Very crowded during big festivals; keep belongings secure and follow police/volunteer instructions near ghats.",
+    "minimum_days": 1,
+    "ideal_days": 2,
+    "maximum_days": 3,
+    "suggested_itinerary": "Day 1: Har Ki Pauri and Aarti; Day 2: Additional temples and walks, then onward to Rishikesh or hills.",
+    "accommodation_types": [
+      "Dharamshalas",
+      "Budget hotels",
+      "Mid-range and riverfront hotels"
+    ],
+    "food_scene": "Largely vegetarian with street snacks, sweets and North Indian meals.",
+    "safety_rating": 8,
+    "safety_notes": "Watch for slippery steps at ghats and strong currents; stay within designated bathing zones.",
+    "internet_connectivity": "Good 4G across town.",
+    "mobile_network": [
+      "Jio",
+      "Airtel",
+      "Vi"
+    ],
+    "atm_availability": "Many ATMs in town and near busy areas.",
+    "language_spoken": [
+      "Hindi",
+      "Garhwali",
+      "English (some)"
+    ],
+    "permits_required": false,
+    "local_culture": "Deeply religious city with constant pilgrim footfall.",
+    "festivals_events": "Kumbh Mela (periodic), Kanwar Yatra, Diwali and other major Hindu festivals.",
+    "local_customs": "Dress modestly, remove footwear before entering temples, and respect queuing systems and Aarti protocols.",
+    "shopping_highlights": [
+      "Religious items and rudraksha",
+      "Sweets and snacks",
+      "Brassware"
+    ],
+    "local_cuisine_must_try": [
+      "Kachori and puri-sabzi",
+      "Local sweets like peda and jalebi"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:177"
+    ],
+    "user_reviews_summary": "Powerful spiritual atmosphere noted by many; some feel crowds and noise can be overwhelming in peak times.",
+    "recent_developments": "Improved ghat infrastructure, lighting and crowd management during big events.",
+    "sustainability_notes": "River pollution a concern; avoid plastic offerings and use designated bins.",
+    "destination_name": "Haridwar",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 41,
+    "state": "Uttarakhand",
+    "district": "Tehri Garhwal",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 30.45,
+      "longitude": 78.32
+    },
+    "altitude_m": 2600,
+    "popularity_score": 5,
+    "accessibility": "Moderate",
+    "nearest_airport": {
+      "name": "Dehradun (Jolly Grant) Airport",
+      "distance_km": 80
+    },
+    "nearest_railway_station": {
+      "name": "Rishikesh / Dehradun",
+      "distance_km": 75
+    },
+    "nearest_major_city": {
+      "name": "Mussoorie",
+      "distance_km": 40
+    },
+    "road_connectivity": "Hilly road from Chamba\u2013Mussoorie side with moderate traffic; accessible by car, taxi and limited buses.[web:228][web:232]",
+    "budget_category": {
+      "accommodation_range": [
+        800,
+        1500
+      ],
+      "food_range": [
+        250,
+        500
+      ],
+      "activities_range": [
+        200,
+        500
+      ],
+      "local_transport_range": [
+        200,
+        400
+      ],
+      "total_daily_range": [
+        1450,
+        2900
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1500,
+        3500
+      ],
+      "food_range": [
+        400,
+        800
+      ],
+      "activities_range": [
+        400,
+        800
+      ],
+      "local_transport_range": [
+        300,
+        600
+      ],
+      "total_daily_range": [
+        2600,
+        5700
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        3500,
+        9000
+      ],
+      "food_range": [
+        700,
+        1800
+      ],
+      "activities_range": [
+        600,
+        1500
+      ],
+      "local_transport_range": [
+        400,
+        800
+      ],
+      "total_daily_range": [
+        5200,
+        20100
+      ]
+    },
+    "trip_types": [
+      "Offbeat_hill",
+      "Nature",
+      "Short_break",
+      "Workation"
+    ],
+    "primary_attractions": [
+      "Apple orchards and forest walks",
+      "Views towards snow peaks (on clear days)",
+      "Nearby Surkanda Devi Temple"
+    ],
+    "activities_available": [
+      "Easy hikes and village walks",
+      "Camping and bonfires (in season)",
+      "Short drives to viewpoints"
+    ],
+    "unique_experiences": "Quiet hill hamlet above Mussoorie with orchards and limited commercialisation, popular as a peaceful workation spot.[web:228][web:232]",
+    "hidden_gems": [
+      "Forest trails around Kanatal ridge",
+      "Small homestays with valley-facing sit-outs"
+    ],
+    "best_seasons": [
+      "Spring",
+      "Summer",
+      "Autumn",
+      "Snow spells in winter (road permitting).[web:228]"
+    ],
+    "avoid_seasons": [
+      "Days of heavy snowfall or landslide alerts in peak winter and monsoon.[web:228]"
+    ],
+    "peak_tourist_season": "April\u2013June and some winter weekends",
+    "off_season": "Mid-monsoon weeks and very cold snaps",
+    "average_temperature": {
+      "winter": "0-12\u00b0C",
+      "summer": "10-24\u00b0C",
+      "monsoon": "10-20\u00b0C"
+    },
+    "rainfall_pattern": "Regular Himalayan monsoon with misty days and occasional road disruption.[web:228]",
+    "ideal_for": [
+      "Couples",
+      "Remote_workers",
+      "Nature_lovers",
+      "Families_seeking_quiet"
+    ],
+    "ideal_for_why": {
+      "Remote_workers": "Cabin-style stays and fewer crowds than Mussoorie.[web:228]",
+      "Nature_lovers": "Forest, orchards and mountain views without big-town noise."
+    },
+    "special_considerations": "Limited nightlife and shopping; roads can be foggy; carry essentials and cash.",
+    "minimum_days": 2,
+    "ideal_days": 3,
+    "maximum_days": 5,
+    "suggested_itinerary": "Use as a base for slow days: one day for forest and village walks, another for Surkanda Devi and nearby viewpoints, extra days for reading/remote work.[web:228][web:232]",
+    "accommodation_types": [
+      "Homestays",
+      "Small resorts",
+      "Cottages"
+    ],
+    "food_scene": "Mostly in-house meals at stays and a few dhabas; simple North Indian and Garhwali food.",
+    "safety_rating": 8,
+    "safety_notes": "Very quiet; main risk is road conditions in fog/snow.",
+    "internet_connectivity": "Improving 4G; many stays advertise work-friendly Wi\u2011Fi but speeds can vary.[web:228]",
+    "mobile_network": [
+      "Jio",
+      "Airtel",
+      "Vi (spotty in some pockets)"
+    ],
+    "atm_availability": "Few ATMs on route; better to withdraw in Mussoorie/Chamba.",
+    "language_spoken": [
+      "Hindi",
+      "Garhwali",
+      "Basic English in tourism)"
+    ],
+    "permits_required": false,
+    "local_culture": "Garhwali villages with traditional hill lifestyle.",
+    "festivals_events": "Local temple fairs; main draw is calm nature.",
+    "local_customs": "Respect village privacy and temple norms; ask before entering orchards.",
+    "shopping_highlights": [
+      "Local pulses and grains",
+      "Simple handicrafts (more options in Mussoorie/Tehri area)"
+    ],
+    "local_cuisine_must_try": [
+      "Garhwali dal and mandua-based dishes",
+      "Simple homely thalis"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:228",
+      "web:232"
+    ],
+    "user_reviews_summary": "Praised as a peaceful, less commercial alternative to bigger hill stations with good scope for doing nothing.",
+    "recent_developments": "More boutique stays and workation packages while still far from mass-tourism levels.[web:228]",
+    "sustainability_notes": "Limited waste systems; carry your trash back and conserve water and electricity.",
+    "destination_name": "Kanatal",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 42,
+    "state": "Uttarakhand",
+    "district": "Almora",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 29.7,
+      "longitude": 79.77
+    },
+    "altitude_m": 2400,
+    "popularity_score": 6,
+    "accessibility": "Moderate",
+    "nearest_airport": {
+      "name": "Pantnagar Airport",
+      "distance_km": 140
+    },
+    "nearest_railway_station": {
+      "name": "Kathgodam",
+      "distance_km": 120
+    },
+    "nearest_major_city": {
+      "name": "Almora",
+      "distance_km": 30
+    },
+    "road_connectivity": "Mountain roads from Almora side; last stretch into Binsar Wildlife Sanctuary has controlled vehicle entry.[web:232]",
+    "budget_category": {
+      "accommodation_range": [
+        1000,
+        1800
+      ],
+      "food_range": [
+        300,
+        600
+      ],
+      "activities_range": [
+        200,
+        500
+      ],
+      "local_transport_range": [
+        300,
+        600
+      ],
+      "total_daily_range": [
+        1800,
+        3500
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1800,
+        4000
+      ],
+      "food_range": [
+        500,
+        900
+      ],
+      "activities_range": [
+        400,
+        800
+      ],
+      "local_transport_range": [
+        400,
+        800
+      ],
+      "total_daily_range": [
+        3100,
+        6500
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        4000,
+        9000
+      ],
+      "food_range": [
+        800,
+        1600
+      ],
+      "activities_range": [
+        600,
+        1500
+      ],
+      "local_transport_range": [
+        500,
+        900
+      ],
+      "total_daily_range": [
+        5900,
+        13000
+      ]
+    },
+    "trip_types": [
+      "Offbeat_hill",
+      "Wildlife",
+      "Birding",
+      "Workation"
+    ],
+    "primary_attractions": [
+      "Binsar Wildlife Sanctuary viewpoints",
+      "Zero Point trek",
+      "Panoramic views of Nanda Devi and other peaks (on clear days)"
+    ],
+    "activities_available": [
+      "Short treks and forest walks",
+      "Birdwatching",
+      "Sunrise/sunset mountain viewing"
+    ],
+    "unique_experiences": "Staying inside or near a forest sanctuary with dense oak\u2013rhododendron woods and Himalayan peak views from ridges.[web:232]",
+    "hidden_gems": [
+      "Early-morning walks to quieter viewpoints inside sanctuary",
+      "Small village trails below the main ridge"
+    ],
+    "best_seasons": [
+      "Autumn",
+      "Winter (for clear views)",
+      "Spring (for blooms).[web:232]"
+    ],
+    "avoid_seasons": [
+      "Peak monsoon when leeches and slippery trails are common; heavy snowfall spells if roads close."
+    ],
+    "peak_tourist_season": "October\u2013November and March\u2013April long weekends",
+    "off_season": "Monsoon months and some deep winter weeks",
+    "average_temperature": {
+      "winter": "-2-12\u00b0C",
+      "summer": "10-24\u00b0C",
+      "monsoon": "12-20\u00b0C"
+    },
+    "rainfall_pattern": "Good monsoon rainfall keeps forest lush; mist is common.",
+    "ideal_for": [
+      "Birders",
+      "Writers_and_remote_workers",
+      "Nature_lovers",
+      "Families_seeking_quiet"
+    ],
+    "ideal_for_why": {
+      "Birders": "Forest habitat with many Himalayan bird species.[web:232]",
+      "Writers_and_remote_workers": "Tranquil atmosphere with some stays offering Wi\u2011Fi."
+    },
+    "special_considerations": "Entry fee for sanctuary; limited shops inside\u2014most stays are semi-all-inclusive for meals; nights can be very quiet.",
+    "minimum_days": 2,
+    "ideal_days": 3,
+    "maximum_days": 5,
+    "suggested_itinerary": "Day 1: Arrive and short walk around stay; Day 2: Zero Point trek and birding; Day 3+: slow days with forest walks and reading/remote work.[web:232]",
+    "accommodation_types": [
+      "Forest guesthouses",
+      "Eco-lodges",
+      "Homestays around boundary villages"
+    ],
+    "food_scene": "Mostly in-house food at lodges/homestays; Kumaoni dishes plus simple North Indian.",
+    "safety_rating": 8,
+    "safety_notes": "Wildlife is shy but present; follow lodge guidance and avoid walking alone too late at night inside deep forest.",
+    "internet_connectivity": "Variable; some properties have decent Wi\u2011Fi, others very limited.[web:232]",
+    "mobile_network": [
+      "Patchy Jio/Airtel; BSNL in some spots"
+    ],
+    "atm_availability": "ATMs in Almora; none inside sanctuary.",
+    "language_spoken": [
+      "Hindi",
+      "Kumaoni",
+      "Basic English at tourism stays"
+    ],
+    "permits_required": true,
+    "permits_details": "Forest entry ticket for sanctuary gate; charged per vehicle/person.",
+    "local_culture": "Kumaoni hill culture with small villages and terrace farming.",
+    "festivals_events": "Local hill festivals in nearby towns; Binsar itself is nature-focused.",
+    "local_customs": "Keep noise low in forest; respect village privacy.",
+    "shopping_highlights": [
+      "Local woollens and handloom (buy in Almora)",
+      "Hill pulses and grains"
+    ],
+    "local_cuisine_must_try": [
+      "Bhatt ki churkani",
+      "Aloo ke gutke and simple Kumaoni thali"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:225",
+      "web:232"
+    ],
+    "user_reviews_summary": "Frequently described as serene and forested, ideal for birders and those escaping crowds.",
+    "recent_developments": "Rise in eco-lodges and homestays catering to slow travellers.[web:232]",
+    "sustainability_notes": "Inside a protected area\u2014stay on trails, avoid loud music and minimise plastic waste.",
+    "destination_name": "Binsar"
+  },
+  {
+    "id": 43,
+    "state": "Uttarakhand",
+    "district": "Pithoragarh",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 30.07,
+      "longitude": 80.24
+    },
+    "altitude_m": 2200,
+    "popularity_score": 6,
+    "accessibility": "Difficult",
+    "nearest_airport": {
+      "name": "Pantnagar (via long road journey)",
+      "distance_km": 320
+    },
+    "nearest_railway_station": {
+      "name": "Kathgodam / Tanakpur",
+      "distance_km": 280
+    },
+    "nearest_major_city": {
+      "name": "Pithoragarh",
+      "distance_km": 130
+    },
+    "road_connectivity": "Long, winding mountain roads via Almora\u2013Thal or other Kumaon routes; scenic but time-consuming.[web:229][web:232]",
+    "budget_category": {
+      "accommodation_range": [
+        800,
+        1500
+      ],
+      "food_range": [
+        250,
+        500
+      ],
+      "activities_range": [
+        200,
+        400
+      ],
+      "local_transport_range": [
+        250,
+        500
+      ],
+      "total_daily_range": [
+        1500,
+        2900
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1500,
+        3500
+      ],
+      "food_range": [
+        400,
+        800
+      ],
+      "activities_range": [
+        400,
+        800
+      ],
+      "local_transport_range": [
+        300,
+        600
+      ],
+      "total_daily_range": [
+        2600,
+        5700
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        3500,
+        9000
+      ],
+      "food_range": [
+        700,
+        1600
+      ],
+      "activities_range": [
+        600,
+        1500
+      ],
+      "local_transport_range": [
+        400,
+        800
+      ],
+      "total_daily_range": [
+        5200,
+        19900
+      ]
+    },
+    "trip_types": [
+      "Offbeat_hill",
+      "Trekking_base",
+      "Mountain_views",
+      "Adventure"
+    ],
+    "primary_attractions": [
+      "Panchachuli peak views",
+      "Khaliya Top trek",
+      "Base for Milam and Ralam glacier treks"
+    ],
+    "activities_available": [
+      "Day hikes and multi-day treks",
+      "Village walks",
+      "Birding and photography"
+    ],
+    "unique_experiences": "Front-row views of snow-clad Panchachuli range from a quiet Kumaon town known as a trekkers\u2019 base.[web:229]",
+    "hidden_gems": [
+      "Sunrise and sunset viewpoints around Khaliya Top ridge",
+      "Small local hot springs and village trails"
+    ],
+    "best_seasons": [
+      "Spring",
+      "Summer",
+      "Autumn (for clear mountain views)."
+    ],
+    "avoid_seasons": [
+      "Peak monsoon and heavy snowfall periods when roads and high trails may close.[web:229]"
+    ],
+    "peak_tourist_season": "April\u2013June and September\u2013October",
+    "off_season": "Monsoon and deep winter",
+    "average_temperature": {
+      "winter": "-2-10\u00b0C",
+      "summer": "10-24\u00b0C",
+      "monsoon": "12-20\u00b0C"
+    },
+    "rainfall_pattern": "Heavy monsoon rains; shoulder months offer greener views.",
+    "ideal_for": [
+      "Trekkers",
+      "Mountain_photographers",
+      "Offbeat_seekers"
+    ],
+    "ideal_for_why": {
+      "Trekkers": "Gateway to glaciers like Milam and Ralam plus closer treks like Khaliya.[web:229]",
+      "Mountain_photographers": "Dramatic views of Panchachuli from easily accessible viewpoints."
+    },
+    "special_considerations": "Long travel time; limited medical facilities for serious emergencies; acclimatisation to cooler temps recommended.",
+    "minimum_days": 3,
+    "ideal_days": 4,
+    "maximum_days": 7,
+    "suggested_itinerary": "Day 1\u20132: Travel from plains to Munsiyari with intermediate halt; Day 3: Khaliya Top; Day 4+: local village walks or start of longer treks.",
+    "accommodation_types": [
+      "Guesthouses",
+      "Simple hotels",
+      "Trek lodges and homestays"
+    ],
+    "food_scene": "Local eateries and in-house kitchens; Kumaoni and North Indian dishes.",
+    "safety_rating": 7,
+    "safety_notes": "Mountain roads and trekking terrain present main risks; check weather and trail conditions.",
+    "internet_connectivity": "Basic 3G/4G in town; weaker as you move out.",
+    "mobile_network": [
+      "BSNL, Jio (spotty)",
+      "Airtel in some stretches"
+    ],
+    "atm_availability": "Limited; carry sufficient cash from bigger towns.",
+    "language_spoken": [
+      "Hindi",
+      "Kumaoni"
+    ],
+    "permits_required": false,
+    "local_culture": "Traditional Kumaoni villages with high-mountain lifestyle.",
+    "festivals_events": "Local fairs; main focus is mountain and trekking culture.",
+    "local_customs": "Ask before photographing locals; respect village boundaries and fields.",
+    "shopping_highlights": [
+      "Local woollens",
+      "Handicrafts"
+    ],
+    "local_cuisine_must_try": [
+      "Kumaoni dal\u2013bhaat with seasonal greens",
+      "Local bhatt-based dishes"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:229",
+      "web:232"
+    ],
+    "user_reviews_summary": "Rated as one of Uttarakhand\u2019s most scenic offbeat bases with big-mountain feel but basic infrastructure.",
+    "recent_developments": "Gradual growth of homestays and small hotels catering to trekkers and road-trippers.[web:229]",
+    "sustainability_notes": "Remote fragile region; carry back trash and use local guides to support community economy.",
+    "destination_name": "Munsiyari",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 44,
+    "state": "Uttarakhand",
+    "district": "Dehradun",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 30.7,
+      "longitude": 77.87
+    },
+    "altitude_m": 2100,
+    "popularity_score": 5,
+    "accessibility": "Moderate",
+    "nearest_airport": {
+      "name": "Dehradun (Jolly Grant) Airport",
+      "distance_km": 115
+    },
+    "nearest_railway_station": {
+      "name": "Dehradun",
+      "distance_km": 90
+    },
+    "nearest_major_city": {
+      "name": "Dehradun",
+      "distance_km": 90
+    },
+    "road_connectivity": "7\u20138 hour drive from Delhi via Dehradun and Vikasnagar; last sections are hilly with some narrow curves.[web:232]",
+    "budget_category": {
+      "accommodation_range": [
+        800,
+        1500
+      ],
+      "food_range": [
+        250,
+        500
+      ],
+      "activities_range": [
+        200,
+        400
+      ],
+      "local_transport_range": [
+        200,
+        400
+      ],
+      "total_daily_range": [
+        1450,
+        2800
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1500,
+        3000
+      ],
+      "food_range": [
+        400,
+        800
+      ],
+      "activities_range": [
+        400,
+        800
+      ],
+      "local_transport_range": [
+        300,
+        600
+      ],
+      "total_daily_range": [
+        2600,
+        5200
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        3000,
+        8000
+      ],
+      "food_range": [
+        700,
+        1500
+      ],
+      "activities_range": [
+        600,
+        1500
+      ],
+      "local_transport_range": [
+        400,
+        800
+      ],
+      "total_daily_range": [
+        4700,
+        15800
+      ]
+    },
+    "trip_types": [
+      "Offbeat_hill",
+      "Nature",
+      "Weekend_getaway",
+      "Light_adventure"
+    ],
+    "primary_attractions": [
+      "Deoban forest viewpoints",
+      "Tiger Falls (nearby)",
+      "Village and ridge walks"
+    ],
+    "activities_available": [
+      "Nature walks and birding at Deoban",
+      "Short treks to waterfalls and viewpoints",
+      "Camping and bonfires (in season)"
+    ],
+    "unique_experiences": "Quiet cantonment hill town with deodar forests and expansive Himalayan views from Deoban on clear days.[web:232]",
+    "hidden_gems": [
+      "Less-used forest paths around Deoban",
+      "Small homestays in villages around Chakrata"
+    ],
+    "best_seasons": [
+      "Spring",
+      "Summer",
+      "Autumn"
+    ],
+    "avoid_seasons": [
+      "Peak monsoon and heavy snowfall days when roads get risky.[web:232]"
+    ],
+    "peak_tourist_season": "April\u2013June and some winter weekends",
+    "off_season": "Rainiest weeks and extreme cold spells",
+    "average_temperature": {
+      "winter": "0-12\u00b0C",
+      "summer": "12-26\u00b0C",
+      "monsoon": "12-20\u00b0C"
+    },
+    "rainfall_pattern": "Regular hill-station rain and mist in monsoon.",
+    "ideal_for": [
+      "Weekend_travellers_from_Delhi",
+      "Families",
+      "Birders_and_nature_lovers"
+    ],
+    "ideal_for_why": {
+      "Weekend_travellers_from_Delhi": "Offbeat alternative to crowded Mussoorie with similar travel time.[web:232]",
+      "Birders_and_nature_lovers": "Deoban forest ecosystems and quiet ridges."
+    },
+    "special_considerations": "Limited big-town facilities; some areas inside cantonment have restricted access; fuel and ATMs mainly in gateway towns.",
+    "minimum_days": 2,
+    "ideal_days": 3,
+    "maximum_days": 4,
+    "suggested_itinerary": "Day 1: Reach and local walks; Day 2: Deoban and viewpoints; Day 3: Tiger Falls or nearby villages.[web:232]",
+    "accommodation_types": [
+      "Small hotels",
+      "Homestays",
+      "Camps"
+    ],
+    "food_scene": "Local dhabas and in-house kitchens serving simple Indian food.",
+    "safety_rating": 8,
+    "safety_notes": "Generally safe; drive carefully on forest roads and in fog.",
+    "internet_connectivity": "Basic 4G in town; weaker in forest and remote hamlets.",
+    "mobile_network": [
+      "Jio",
+      "Airtel, variable"
+    ],
+    "atm_availability": "Limited; withdraw in Dehradun or larger towns.",
+    "language_spoken": [
+      "Hindi",
+      "Garhwali"
+    ],
+    "permits_required": false,
+    "local_culture": "Garhwali villages with military presence in cantonment area.",
+    "festivals_events": "Local fairs; nature remains the main draw.",
+    "local_customs": "Respect cantonment rules and village boundaries.",
+    "shopping_highlights": [
+      "Very limited souvenir options; better shopping in Dehradun"
+    ],
+    "local_cuisine_must_try": [
+      "Simple hill thali and fresh seasonal vegetables"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:232"
+    ],
+    "user_reviews_summary": "Well-liked as a quiet, old-world hill station without big malls or crowds.",
+    "recent_developments": "More small-scale stay options and promotion as an offbeat weekend break.[web:232]",
+    "sustainability_notes": "Forest and village environments are sensitive; avoid loud music and litter.",
+    "destination_name": "Chakrata",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 72,
+    "state": "Uttarakhand",
+    "district": "Almora",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 29.62,
+      "longitude": 79.67
+    },
+    "altitude_m": 1650,
+    "popularity_score": 7,
+    "accessibility": "Moderate",
+    "nearest_airport": {
+      "name": "Pantnagar Airport",
+      "distance_km": 120
+    },
+    "nearest_railway_station": {
+      "name": "Kathgodam",
+      "distance_km": 90
+    },
+    "nearest_major_city": {
+      "name": "Haldwani",
+      "distance_km": 95
+    },
+    "road_connectivity": "Hill roads from Kathgodam/Haldwani with regular buses and shared cabs; Almora is a key hub for nearby valleys like Binsar and Kasar Devi.[web:256]",
+    "budget_category": {
+      "accommodation_range": [
+        700,
+        1600
+      ],
+      "food_range": [
+        200,
+        450
+      ],
+      "activities_range": [
+        200,
+        600
+      ],
+      "local_transport_range": [
+        200,
+        500
+      ],
+      "total_daily_range": [
+        1300,
+        3150
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1600,
+        3500
+      ],
+      "food_range": [
+        350,
+        800
+      ],
+      "activities_range": [
+        400,
+        1000
+      ],
+      "local_transport_range": [
+        300,
+        700
+      ],
+      "total_daily_range": [
+        2650,
+        6050
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        3500,
+        10000
+      ],
+      "food_range": [
+        700,
+        1500
+      ],
+      "activities_range": [
+        800,
+        1800
+      ],
+      "local_transport_range": [
+        400,
+        900
+      ],
+      "total_daily_range": [
+        5400,
+        14200
+      ]
+    },
+    "trip_types": [
+      "Hill_town",
+      "Culture",
+      "Slow_travel",
+      "Spiritual"
+    ],
+    "primary_attractions": [
+      "Old Almora bazaars and traditional houses",
+      "Kasar Devi Temple ridge",
+      "Views towards Nanda Devi range on clear days",
+      "Proximity to Binsar Wildlife Sanctuary"
+    ],
+    "activities_available": [
+      "Town and bazaar walks",
+      "Ridge walks around Kasar Devi",
+      "Short drives to viewpoints and Binsar gate"
+    ],
+    "unique_experiences": "Relaxed Kumaon hill town with a historic bazaar core and a ridge (Kasar Devi) long associated with writers, seekers and spiritual travellers.[web:256]",
+    "hidden_gems": [
+      "Quiet village homestays above/below main ridge",
+      "Sunrise and sunset points near Kasar Devi away from crowds"
+    ],
+    "best_seasons": [
+      "October\u2013April for crisp views; monsoon for lush valleys if okay with cloud.[web:256][web:259]"
+    ],
+    "avoid_seasons": [
+      "Peak monsoon landslide alerts and coldest snaps if not prepared for low temperatures.[web:259]"
+    ],
+    "peak_tourist_season": "Autumn and winter, particularly November\u2013January.[web:256][web:259]",
+    "off_season": "Mid-monsoon and shoulder periods when some cafes shut",
+    "average_temperature": {
+      "winter": "2-14\u00b0C",
+      "summer": "16-28\u00b0C",
+      "monsoon": "14-22\u00b0C"
+    },
+    "rainfall_pattern": "Typical mid-Himalayan monsoon with some road disruption on very heavy days.",
+    "ideal_for": [
+      "Writers_and_remote_workers",
+      "Spiritual_seekers",
+      "Budget_backpackers"
+    ],
+    "ideal_for_why": {
+      "Writers_and_remote_workers": "Quiet guesthouses and cafes on Kasar ridge; many advertise Wi\u2011Fi and long-stay tariffs.[web:256]",
+      "Spiritual_seekers": "Kasar Devi considered an energy spot, mentioned in travel and spiritual circuits.[web:256]"
+    },
+    "special_considerations": "Nights can be cold; some guesthouses basic; carry cash as digital payments may fail during network dips.",
+    "minimum_days": 2,
+    "ideal_days": 3,
+    "maximum_days": 6,
+    "suggested_itinerary": "Use Almora/Kasar as a base: mix slow days on ridge and bazaar walks with a day-trip into Binsar or nearby villages.[web:256]",
+    "accommodation_types": [
+      "Budget lodges in Almora",
+      "Cafes-with-rooms at Kasar Devi",
+      "Homestays and small resorts on surrounding hills"
+    ],
+    "food_scene": "Simple Kumaoni and North Indian food plus traveller cafes on ridge serving basics and coffee.[web:256]",
+    "safety_rating": 8,
+    "safety_notes": "Generally safe; typical hill-road caution applies for drives to/from town.",
+    "internet_connectivity": "4G in town; variable along ridge and interiors but many cafes provide workable Wi\u2011Fi.",
+    "mobile_network": [
+      "Jio",
+      "Airtel",
+      "Vi (spotty in some higher pockets)"
+    ],
+    "atm_availability": "ATMs in Almora town; none on remote ridges.",
+    "language_spoken": [
+      "Hindi",
+      "Kumaoni",
+      "Basic English in tourism.[web:256]"
+    ],
+    "permits_required": false,
+    "local_culture": "Traditional Kumaoni families, temples and old bazaar traditions mixed with newer alternative/creative communities.",
+    "festivals_events": "Local temple fairs and standard hill festivals; occasional retreats/workshops around Kasar.",
+    "local_customs": "Dress modestly near temples and in old-town lanes; support local shops for snacks and essentials.",
+    "shopping_highlights": [
+      "Kumaoni sweets like bal mithai and singauri",
+      "Local woollens and shawls",
+      "Village-made pickles and pulses"
+    ],
+    "local_cuisine_must_try": [
+      "Bhatt ki churkani and other Kumaoni dals",
+      "Bal mithai and singauri",
+      "Simple homely thalis"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:256",
+      "web:259"
+    ],
+    "user_reviews_summary": "Perceived as a calm, culturally rich base close to Binsar; many mention Kasar\u2019s vibe as particularly conducive to reflection.[web:256]",
+    "recent_developments": "Slow-travel and wellness-oriented stays increasingly promoted around Kasar ridge.[web:256]",
+    "sustainability_notes": "Water is limited; use sparingly and avoid plastic\u2014hill towns struggle with solid waste management.",
+    "destination_name": "Almora & Kasar Devi Belt",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 91,
+    "state": "Uttarakhand",
+    "district": "Dehradun / Haridwar",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 30.12,
+      "longitude": 78.29
+    },
+    "altitude_m": 372,
+    "popularity_score": 10,
+    "accessibility": "Easy",
+    "nearest_airport": {
+      "name": "Dehradun (Jolly Grant) Airport",
+      "distance_km": 20
+    },
+    "nearest_railway_station": {
+      "name": "Haridwar Junction / Rishikesh",
+      "distance_km": 0
+    },
+    "nearest_major_city": {
+      "name": "Dehradun",
+      "distance_km": 45
+    },
+    "road_connectivity": "Excellent highway and bus connectivity from Delhi, Dehradun and other north Indian cities.[web:273][web:274][web:277]",
+    "budget_category": {
+      "accommodation_range": [
+        600,
+        1600
+      ],
+      "food_range": [
+        150,
+        350
+      ],
+      "activities_range": [
+        200,
+        600
+      ],
+      "local_transport_range": [
+        150,
+        400
+      ],
+      "total_daily_range": [
+        1100,
+        2950
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1600,
+        3500
+      ],
+      "food_range": [
+        300,
+        700
+      ],
+      "activities_range": [
+        400,
+        1000
+      ],
+      "local_transport_range": [
+        200,
+        500
+      ],
+      "total_daily_range": [
+        2500,
+        5700
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        3500,
+        15000
+      ],
+      "food_range": [
+        600,
+        1500
+      ],
+      "activities_range": [
+        700,
+        2000
+      ],
+      "local_transport_range": [
+        300,
+        700
+      ],
+      "total_daily_range": [
+        5100,
+        19200
+      ]
+    },
+    "trip_types": [
+      "Spiritual",
+      "Yoga",
+      "Ganga_ghats",
+      "Adventure"
+    ],
+    "primary_attractions": [
+      "Ganga Aarti at Haridwar and Rishikesh ghats",
+      "Ashrams and yoga/meditation centres",
+      "Suspension bridges like Lakshman Jhula (and new bridge)",
+      "Rafting and short hikes in surrounding hills"
+    ],
+    "activities_available": [
+      "Yoga classes and retreats",
+      "Evening Ganga Aarti",
+      "White-water rafting (seasonal)",
+      "Temple and ashram visits"
+    ],
+    "unique_experiences": "Gateway to the Himalayas where Ganga emerges from the hills, combining yoga, spiritual stays and soft adventure.[web:273][web:274][web:277]",
+    "hidden_gems": [
+      "Small ashrams upriver from main town ghats",
+      "Quiet morning walks on less-crowded river stretches"
+    ],
+    "best_seasons": [
+      "September\u2013April for comfortable weather and active yoga/retreat calendar.[web:273][web:274]"
+    ],
+    "avoid_seasons": [
+      "Peak monsoon for high river levels and landslides; high summer afternoons can be hot in Haridwar.[web:274]"
+    ],
+    "peak_tourist_season": "Festivals, long weekends and winter months; Char Dham season brings high pilgrim flows through Haridwar\u2013Rishikesh.[web:273][web:277]",
+    "off_season": "Monsoon and very hot weeks before rains, except for serious sadhaks who stay year-round",
+    "average_temperature": {
+      "winter": "6-22\u00b0C",
+      "summer": "24-38\u00b0C",
+      "monsoon": "22-30\u00b0C"
+    },
+    "rainfall_pattern": "North Indian monsoon with occasional intense spells that raise Ganga levels.[web:274]",
+    "ideal_for": [
+      "Yoga_seekers",
+      "First_time_spiritual_travellers",
+      "Families"
+    ],
+    "ideal_for_why": {
+      "Yoga_seekers": "Global reputation as \u2018yoga capital\u2019, with teacher-training and shorter retreats.[web:273][web:274]",
+      "First_time_spiritual_travellers": "Easy logistics and wide range of ashrams and hotels at different budgets.[web:273]"
+    },
+    "special_considerations": "Alcohol and non-vegetarian food are restricted in many parts of Rishikesh; respect river safety advisories during rafting and high flow.",
+    "minimum_days": 2,
+    "ideal_days": 3,
+    "maximum_days": 7,
+    "suggested_itinerary": "Combine Haridwar evening Aarti with 2\u20135 days in Rishikesh focusing on yoga, river walks and short hill excursions.[web:273][web:274]",
+    "accommodation_types": [
+      "Ashrams and dharamshalas",
+      "Budget guesthouses",
+      "Boutique Ganga-facing resorts"
+    ],
+    "food_scene": "Predominantly vegetarian with many cafes serving Indian and continental health-focused dishes.[web:273]",
+    "safety_rating": 9,
+    "safety_notes": "Very popular with solo and foreign travellers; main risks are river currents and occasional crowd surges at ghats.",
+    "internet_connectivity": "Strong 4G and Wi\u2011Fi in most ashrams, cafes and hotels.",
+    "mobile_network": [
+      "Jio",
+      "Airtel",
+      "Vi"
+    ],
+    "atm_availability": "Ample ATMs in both towns.",
+    "language_spoken": [
+      "Hindi",
+      "Garhwali",
+      "English widely in tourism.[web:273]"
+    ],
+    "permits_required": false,
+    "local_culture": "Deeply religious Ganga-town culture with daily rituals, kirtans and satsangs.",
+    "festivals_events": "Kumbh (periodic in Haridwar), Kanwar Yatra, Ganga Dussehra and numerous ashram events.[web:277]",
+    "local_customs": "Dress modestly at ghats and temples; avoid photography during worship where restricted.",
+    "shopping_highlights": [
+      "Rudraksha beads and spiritual books",
+      "Ayurvedic products and yoga gear"
+    ],
+    "local_cuisine_must_try": [
+      "Simple ashram thalis",
+      "Street-side chole\u2013bhature and lassi in Haridwar"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:273",
+      "web:274",
+      "web:277"
+    ],
+    "user_reviews_summary": "Frequently rated among India\u2019s top spiritual journeys, combining accessibility with a strong yoga and Ganga focus.[web:273][web:274]",
+    "recent_developments": "Featured in multiple \u2018spiritual journeys\u2019 and \u2018Himalayan yoga route\u2019 write\u2011ups for 2025.[web:274][web:277]",
+    "sustainability_notes": "Avoid plastic near the river, participate in ghat clean\u2011ups where offered and use biodegradable offerings.",
+    "destination_name": "Rishikesh & Haridwar (Himalayan Yoga Route)",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 97,
+    "state": "Uttarakhand",
+    "district": "Chamoli",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 30.53,
+      "longitude": 79.57
+    },
+    "altitude_m": 2800,
+    "popularity_score": 8,
+    "accessibility": "Difficult",
+    "nearest_airport": {
+      "name": "Dehradun (Jolly Grant) Airport",
+      "distance_km": 280
+    },
+    "nearest_railway_station": {
+      "name": "Rishikesh / Haridwar",
+      "distance_km": 260
+    },
+    "nearest_major_city": {
+      "name": "Dehradun",
+      "distance_km": 300
+    },
+    "road_connectivity": "Mountain roads via Rishikesh\u2013Joshimath; cable car and mountain roads connect Joshimath to Auli slopes.[web:275][web:278]",
+    "budget_category": {
+      "accommodation_range": [
+        1200,
+        2500
+      ],
+      "food_range": [
+        300,
+        700
+      ],
+      "activities_range": [
+        800,
+        1500
+      ],
+      "local_transport_range": [
+        500,
+        1200
+      ],
+      "total_daily_range": [
+        2800,
+        5900
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        2500,
+        6000
+      ],
+      "food_range": [
+        600,
+        1200
+      ],
+      "activities_range": [
+        1200,
+        2200
+      ],
+      "local_transport_range": [
+        700,
+        1500
+      ],
+      "total_daily_range": [
+        5000,
+        10900
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        6000,
+        16000
+      ],
+      "food_range": [
+        900,
+        1800
+      ],
+      "activities_range": [
+        2000,
+        3500
+      ],
+      "local_transport_range": [
+        900,
+        1800
+      ],
+      "total_daily_range": [
+        9800,
+        23100
+      ]
+    },
+    "trip_types": [
+      "Skiing",
+      "Snow_destination",
+      "Mountain"
+    ],
+    "primary_attractions": [
+      "Groomed ski slopes with Nanda Devi views",
+      "Chair\u2011lifts and cable car rides",
+      "Snow activities for beginners and families"
+    ],
+    "activities_available": [
+      "Skiing lessons and guided runs",
+      "Snow play and simple sledding",
+      "Short treks and viewpoint walks"
+    ],
+    "unique_experiences": "Well\u2011structured, family\u2011friendly ski slopes with spectacular Himalayan backdrops.[web:275][web:278]",
+    "hidden_gems": [
+      "Quiet slope segments early in the day",
+      "Nearby viewpoints away from main lift lines"
+    ],
+    "best_seasons": [
+      "January\u2013March for reliable snow on slopes and comfortable winter stays.[web:275][web:278]"
+    ],
+    "avoid_seasons": [
+      "Weeks with patchy snowfall; monsoon when access roads can be affected."
+    ],
+    "peak_tourist_season": "Winter holiday weeks and long weekends; also busy during specific snow\u2011festival events.[web:275]",
+    "off_season": "Most of year outside snow window; summer sees some trekking traffic but no skiing",
+    "average_temperature": {
+      "winter": "-4-8\u00b0C",
+      "summer": "10-22\u00b0C",
+      "monsoon": "12-18\u00b0C"
+    },
+    "rainfall_pattern": "Snow in winter, rain in shoulder/monsoon; road conditions can be impacted by weather.",
+    "ideal_for": [
+      "First_time_skiers",
+      "Families",
+      "Snow_view_lovers"
+    ],
+    "ideal_for_why": {
+      "First_time_skiers": "Article comparisons emphasise Auli\u2019s smooth, groomed slopes and structured facilities for beginners.[web:275][web:278]",
+      "Families": "Compact resort\u2011style setting with designated learning areas and local trainers.[web:278]"
+    },
+    "special_considerations": "Long drive times; altitude acclimatisation helpful; book ski equipment and instruction in advance for peak weeks.[web:278]",
+    "minimum_days": 2,
+    "ideal_days": 3,
+    "maximum_days": 5,
+    "suggested_itinerary": "Rishikesh\u2013Joshimath\u2013Auli circuit with 2\u20134 snow days followed by down\u2011valley spiritual stops.[web:278]",
+    "accommodation_types": [
+      "Ski resorts",
+      "GMVN and private hotels",
+      "Guesthouses in Joshimath"
+    ],
+    "food_scene": "Hotel\u2011based dining with North Indian and Garhwali dishes; limited independent cafes in peak snow belt.",
+    "safety_rating": 8,
+    "safety_notes": "Structured slopes reduce risk, but beginners must follow instructor guidance and slope rules.[web:278]",
+    "internet_connectivity": "Basic 4G/Wi\u2011Fi around resorts and Joshimath; may be slow during bad weather.",
+    "mobile_network": [
+      "Jio",
+      "Airtel, BSNL (coverage varies with terrain).[web:278]"
+    ],
+    "atm_availability": "ATMs mainly in Joshimath; carry cash to Auli.",
+    "language_spoken": [
+      "Hindi",
+      "Garhwali",
+      "Basic English with ski instructors and hotel staff.[web:278]"
+    ],
+    "permits_required": false,
+    "local_culture": "Garhwali hill communities; winter months bring seasonal tourism focus.",
+    "festivals_events": "Occasional skiing championships and winter events.[web:275]",
+    "local_customs": "Respect local temple norms in Joshimath and surrounding villages.",
+    "shopping_highlights": [
+      "Woollens and small souvenirs in Joshimath"
+    ],
+    "local_cuisine_must_try": [
+      "Garhwali dishes like aloo ke gutke",
+      "Simple hot pahadi meals in cold weather"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:275",
+      "web:278"
+    ],
+    "user_reviews_summary": "Well liked by families and first\u2011time skiers; often contrasted with Gulmarg as the gentler, more organised option.[web:275][web:278]",
+    "recent_developments": "Featured heavily in 2025 \u2018snow destinations\u2019 and Auli\u2011vs\u2011Gulmarg comparisons.[web:275][web:278]",
+    "sustainability_notes": "Keep slopes clean, avoid off\u2011trail damage to vegetation and minimise vehicle idling around snow zones.",
+    "destination_name": "Auli (Garhwal Ski & Snow Resort)",
+    "permits_details": "Not required"
+  },
+  {
+    "id": 100,
+    "state": "Uttarakhand",
+    "district": "Haridwar / Dehradun / Garhwal",
+    "region": "North India",
+    "coordinates": {
+      "latitude": 30.0,
+      "longitude": 78.2
+    },
+    "altitude_m": 300,
+    "popularity_score": 10,
+    "accessibility": "Moderate",
+    "nearest_airport": {
+      "name": "Dehradun (Jolly Grant) Airport",
+      "distance_km": 25
+    },
+    "nearest_railway_station": {
+      "name": "Haridwar Junction / Rishikesh",
+      "distance_km": 0
+    },
+    "nearest_major_city": {
+      "name": "Dehradun",
+      "distance_km": 45
+    },
+    "road_connectivity": "Starting point for Char Dham and multiple Himalayan yatras; extensive bus and taxi networks operate in season.[web:273][web:274][web:277]",
+    "budget_category": {
+      "accommodation_range": [
+        600,
+        1600
+      ],
+      "food_range": [
+        150,
+        350
+      ],
+      "activities_range": [
+        100,
+        300
+      ],
+      "local_transport_range": [
+        200,
+        500
+      ],
+      "total_daily_range": [
+        1050,
+        2750
+      ]
+    },
+    "mid_range_category": {
+      "accommodation_range": [
+        1600,
+        3500
+      ],
+      "food_range": [
+        250,
+        600
+      ],
+      "activities_range": [
+        150,
+        400
+      ],
+      "local_transport_range": [
+        300,
+        600
+      ],
+      "total_daily_range": [
+        2300,
+        5100
+      ]
+    },
+    "luxury_category": {
+      "accommodation_range": [
+        3500,
+        15000
+      ],
+      "food_range": [
+        500,
+        1200
+      ],
+      "activities_range": [
+        300,
+        800
+      ],
+      "local_transport_range": [
+        400,
+        800
+      ],
+      "total_daily_range": [
+        4700,
+        17800
+      ]
+    },
+    "trip_types": [
+      "Spiritual",
+      "Pilgrimage_hub",
+      "Family"
+    ],
+    "primary_attractions": [
+      "Gateway status for Char Dham Yatra (Yamunotri, Gangotri, Kedarnath, Badrinath)",
+      "Haridwar and Rishikesh ghats and ashrams",
+      "Organised yatra packages originating here"
+    ],
+    "activities_available": [
+      "Short local darshans and Ganga Aarti",
+      "Start/end\u2011point rituals for longer yatras",
+      "Booking and orientation for hill pilgrimages"
+    ],
+    "unique_experiences": "Serves as basecamp for some of India\u2019s most significant Himalayan pilgrimages while also offering stand\u2011alone spiritual stays.[web:273][web:274][web:277]",
+    "hidden_gems": [
+      "Small family\u2011run dharamshalas favoured by repeat pilgrims",
+      "Off\u2011season quiet days on selected ghats"
+    ],
+    "best_seasons": [
+      "Char Dham window (roughly April/May\u2013Oct, excluding heavy\u2011rain weeks) plus separate Sep\u2013Apr spiritual\u2011stay season.[web:273][web:277]"
+    ],
+    "avoid_seasons": [
+      "Peak monsoon for landslides in upper Garhwal; very hot May days for those not proceeding uphill."
+    ],
+    "peak_tourist_season": "Char Dham peak months and major festivals like Kumbh years; spiritual travel trends cite strong demand.[web:273][web:277]",
+    "off_season": "Non\u2011yatra monsoon stretch and some winter weeks, when hill shrines are closed",
+    "average_temperature": {
+      "winter": "8-24\u00b0C (plains level)",
+      "summer": "24-38\u00b0C",
+      "monsoon": "22-30\u00b0C"
+    },
+    "rainfall_pattern": "Monsoon impacts onward routes more than base towns; still sees heavy showers.[web:274]",
+    "ideal_for": [
+      "Pilgrim_families",
+      "Organised_tour_groups",
+      "First_time_Himalayan_pilgrims"
+    ],
+    "ideal_for_why": {
+      "Pilgrim_families": "Char Dham packages commonly bundle Haridwar\u2013Rishikesh orientation nights.[web:273]",
+      "First_time_Himalayan_pilgrims": "Infrastructure, guides and tour operators concentrated here for spiritual tourism.[web:277]"
+    },
+    "special_considerations": "Char Dham routes demand fitness and altitude tolerance; check health and travel insurance; follow official advisories closely.[web:273][web:277]",
+    "minimum_days": 1,
+    "ideal_days": 2,
+    "maximum_days": 4,
+    "suggested_itinerary": "1\u20132 nights to acclimatise, attend Aarti and finalise logistics before moving to Char Dham or other Himalayan routes.[web:273]",
+    "accommodation_types": [
+      "Dharamshalas and ashrams",
+      "Budget\u2013mid hotels",
+      "Upscale riverfront retreats"
+    ],
+    "food_scene": "Vegetarian restaurants and langar/annadan setups for pilgrims.",
+    "safety_rating": 8,
+    "safety_notes": "City segments busy; main risks relate to onward hill travel and crowds, not crime.[web:277]",
+    "internet_connectivity": "Good 4G; vital for coordination of hill logistics and weather checks.",
+    "mobile_network": [
+      "Jio",
+      "Airtel",
+      "Vi"
+    ],
+    "atm_availability": "Ample ATMs and banking services.",
+    "language_spoken": [
+      "Hindi",
+      "Garhwali",
+      "English widely in tourism.[web:273]"
+    ],
+    "permits_required": false,
+    "local_culture": "Highly devotional Ganga towns with strong yatra support ecosystem.",
+    "festivals_events": "Kumbh (periodically), Kanwar Yatra and multiple fairs create intense surges.[web:277]",
+    "local_customs": "Queue discipline and modest dress are expected; respect lane closures and police directions in festival time.",
+    "shopping_highlights": [
+      "Yatra essentials, woollens and spiritual items",
+      "Ayurvedic medicines and books"
+    ],
+    "local_cuisine_must_try": [
+      "Simple bhojanalay thalis",
+      "Street chaat and sweets before/after yatra"
+    ],
+    "last_updated": "2026-01-12",
+    "data_sources": [
+      "web:273",
+      "web:274",
+      "web:277"
+    ],
+    "user_reviews_summary": "Seen as the natural jumping\u2011off point for major Himalayan pilgrimages; spiritual\u2011tour trend pieces cite strong demand from all age groups.[web:273][web:277]",
+    "recent_developments": "Mentioned in reports on growth of religious tourism and expanded infrastructure under national schemes.[web:272][web:277]",
+    "sustainability_notes": "Travel in smaller groups where possible, avoid litter during yatras and adhere to hill\u2011route carrying\u2011capacity advisories.",
+    "destination_name": "Haridwar\u2013Rishikesh\u2013Char Dham Spiritual Trail (Meta\u2011Circuit Node)",
+    "permits_details": "Not required"
+  }
+]

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travelora – Explore Uttarakhand</title>
     <meta name="description" content="Discover the sacred lands, serene valleys, and vibrant culture of Uttarakhand.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter and Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -23,7 +26,7 @@
 
     <!-- Login Modal -->
     <div id="loginModal" class="modal-overlay">
-        <div class="modal-box">
+        <div class="modal-box glassmorphic-modal">
             <button class="modal-close" id="modalClose">&times;</button>
             <h2 id="modalTitle">Sign In</h2>
             <p class="modal-sub" id="modalSub">Welcome back to Travelora.</p>
@@ -33,17 +36,17 @@
                 <button type="submit" id="authSubmitBtn" class="btn-solid">Sign In</button>
             </form>
             <p class="modal-footer" id="toggleAuthMode">
-                Don't have an account? <a href="#" style="color: var(--accent);">Sign Up</a>
+                Don't have an account? <a href="#" class="accent-link">Sign Up</a>
             </p>
             <p class="modal-footer" style="margin-top:0.5rem; font-size:0.85rem;">
-                Want to be a Guide? <a href="#" id="openGuideReg" style="color: var(--accent);">Register Here</a>
+                Want to be a Guide? <a href="#" id="openGuideReg" class="accent-link">Register Here</a>
             </p>
         </div>
     </div>
 
     <!-- Guide Registration Modal -->
     <div id="guideModal" class="modal-overlay">
-        <div class="modal-box">
+        <div class="modal-box glassmorphic-modal">
             <button class="modal-close" id="guideModalClose">&times;</button>
             <h2 id="guideModalTitle">Register as Guide</h2>
             <p class="modal-sub">Join Travelora and connect with travelers.</p>
@@ -52,7 +55,6 @@
                 <input type="email" id="guideEmail" placeholder="Email Address" required>
                 <input type="password" id="guidePassword" placeholder="Password (min 6 chars)" required minlength="6">
                 <input type="tel" id="guidePhone" placeholder="Phone Number (+91...)" required>
-                <input type="text" id="guideLicense" placeholder="UTDB License Number" required>
                 <button type="submit" id="guideSubmitBtn" class="btn-solid">Register</button>
             </form>
         </div>
@@ -60,12 +62,12 @@
 
     <!-- Settings Modal -->
     <div id="settingsModal" class="modal-overlay">
-        <div class="modal-box">
+        <div class="modal-box glassmorphic-modal">
             <button class="modal-close" id="settingsClose">&times;</button>
             <h2 id="settingsTitle">Settings</h2>
             
             <div style="margin-top: 1.5rem; display:flex; justify-content:space-between; align-items:center;">
-                <label id="labelDarkMode" for="darkModeToggle" style="font-size:.95rem; font-weight:500; cursor:pointer;">Dark Mode</label>
+                <label id="labelDarkMode" for="darkModeToggle" class="settings-label">Dark Mode</label>
                 <label class="theme-switch">
                     <input type="checkbox" id="darkModeToggle">
                     <span class="theme-slider"></span>
@@ -73,8 +75,8 @@
             </div>
             
             <div style="margin-top: 1.5rem;">
-                <label for="languageSelect" id="labelLanguage" style="display:block; font-size:.95rem; font-weight:500; margin-bottom:.6rem;">Language</label>
-                <select id="languageSelect" style="width:100%; padding:.7rem; border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-family:inherit; outline:none; cursor:pointer;">
+                <label for="languageSelect" id="labelLanguage" class="settings-label" style="display:block; margin-bottom:.6rem;">Language</label>
+                <select id="languageSelect" class="form-input">
                     <option value="en">English</option>
                     <option value="hi">हिंदी (Hindi)</option>
                     <option value="bn">বাংলা (Bengali)</option>
@@ -83,18 +85,88 @@
                     <option value="te">తెలుగు (Telugu)</option>
                 </select>
             </div>
+
+            <div style="margin-top: 1.5rem;">
+                <label for="geminiKeyInput" id="labelGeminiKey" class="settings-label" style="display:block; margin-bottom:.6rem;">Gemini API Key <span style="font-size:.75rem; font-weight:400; color:var(--muted);">(for AI chatbot)</span></label>
+                <input type="password" id="geminiKeyInput" placeholder="Paste your Gemini API key" class="form-input">
+                <p style="font-size:.7rem; color:var(--muted); margin-top:.4rem;">Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank" class="accent-link">Google AI Studio</a></p>
+            </div>
         </div>
     </div>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <header class="hero">
-        <h1 id="heroH1">Explore <span>Uttarakhand</span></h1>
-        <p id="heroP">The land of gods, mountains, and timeless beauty.</p>
+        <div class="hero-bg" style="background-image: url('images/hero.png');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 id="heroH1">Discover the Soul of <span>Uttarakhand</span></h1>
+            <p id="heroP">Cinematic valleys, ancient temples, and snow-capped peaks await you.</p>
+            
+            <!-- Booking / Search Widget -->
+            <div class="booking-widget glassmorphic">
+                <div class="widget-field">
+                    <label>Destination</label>
+                    <input type="text" placeholder="Where do you want to go?">
+                </div>
+                <div class="widget-field">
+                    <label>Dates</label>
+                    <input type="text" placeholder="Add dates">
+                </div>
+                <div class="widget-field">
+                    <label>Guests</label>
+                    <input type="text" placeholder="Add guests">
+                </div>
+                <button class="btn-primary search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
     </header>
 
-    <!-- Category Checkboxes + Grid -->
-    <section id="explore" class="section">
-        <div class="checkbox-filters">
+    <!-- Experience Categories -->
+    <section class="section categories-section">
+        <div class="section-header center">
+            <h2>Experiences Tailored For You</h2>
+            <p>From spiritual awakening to thrilling adventures, find your perfect escape.</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" data-category="temples">
+                <i class="fa-solid fa-om"></i>
+                <span>Pilgrimage</span>
+            </div>
+            <div class="category-card" data-category="spots">
+                <i class="fa-solid fa-mountain-sun"></i>
+                <span>Adventure</span>
+            </div>
+            <div class="category-card" data-category="spots">
+                <i class="fa-solid fa-paw"></i>
+                <span>Wildlife</span>
+            </div>
+            <div class="category-card" data-category="spots">
+                <i class="fa-solid fa-person-skiing"></i>
+                <span>Snow Tourism</span>
+            </div>
+            <div class="category-card" data-category="temples">
+                <i class="fa-solid fa-spa"></i>
+                <span>Wellness & Yoga</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended for You (Dynamic) -->
+    <section id="recommendedSection" class="section rec-section" style="display:none;">
+        <div class="section-header">
+            <h2 class="rec-title"><i class="fa-solid fa-wand-magic-sparkles"></i> <span id="recTitle">Recommended for You</span></h2>
+            <p>Curated specifically based on your interests.</p>
+        </div>
+        <div class="rec-grid" id="recGrid"></div>
+    </section>
+
+    <!-- Main Explore (Dynamic) -->
+    <section id="explore" class="section explore-section">
+        <div class="section-header">
+            <h2>Featured Destinations</h2>
+            <p>Explore the hidden gems and popular landmarks of Devbhoomi.</p>
+        </div>
+        <div class="checkbox-filters glassmorphic-subtle">
             <label class="checkbox-label">
                 <input type="checkbox" value="shopping" checked> <span id="filterShopping">Shopping</span>
             </label>
@@ -111,9 +183,107 @@
         <div class="grid" id="grid"></div>
     </section>
 
+    <!-- Curated Tour Packages -->
+    <section class="section packages-section">
+        <div class="section-header center">
+            <h2>Premium Curated Packages</h2>
+            <p>Exclusive journeys handcrafted by local experts.</p>
+        </div>
+        <div class="packages-grid">
+            <div class="package-card">
+                <div class="pkg-img" style="background-image: url('images/temple.png');"></div>
+                <div class="pkg-body">
+                    <span class="pkg-badge">Best Seller</span>
+                    <h3>Char Dham Yatra</h3>
+                    <p>A 12-day spiritual journey through Kedarnath, Badrinath, Gangotri, and Yamunotri.</p>
+                    <div class="pkg-footer">
+                        <span class="pkg-price">₹45,000</span>
+                        <button class="btn-outline-primary">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="package-card">
+                <div class="pkg-img" style="background-image: url('images/safari.png');"></div>
+                <div class="pkg-body">
+                    <span class="pkg-badge">Adventure</span>
+                    <h3>Jim Corbett Safari</h3>
+                    <p>3 days of thrilling wildlife safaris in India's oldest national park.</p>
+                    <div class="pkg-footer">
+                        <span class="pkg-price">₹15,000</span>
+                        <button class="btn-outline-primary">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="package-card">
+                <div class="pkg-img" style="background-image: url('images/auli.png');"></div>
+                <div class="pkg-body">
+                    <span class="pkg-badge">Seasonal</span>
+                    <h3>Auli Snow Retreat</h3>
+                    <p>Experience the ultimate ski holiday in the pristine slopes of Auli.</p>
+                    <div class="pkg-footer">
+                        <span class="pkg-price">₹22,000</span>
+                        <button class="btn-outline-primary">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasonal Inspiration -->
+    <section class="section seasonal-section">
+        <div class="seasonal-container">
+            <div class="seasonal-content">
+                <h2>Winter Magic in Devbhoomi</h2>
+                <p>As the snow blankets the majestic Himalayas, Uttarakhand transforms into a winter wonderland. Discover serene ski resorts, frozen lakes, and warm pahadi hospitality.</p>
+                <button class="btn-primary">Explore Winter Itineraries</button>
+            </div>
+            <div class="seasonal-image" style="background-image: url('images/auli.png');"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials-section">
+        <div class="section-header center">
+            <h2>Traveler Stories</h2>
+            <p>Hear from those who have experienced the magic.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card glassmorphic-subtle">
+                <p class="review">"The trek to Chopta was breathtaking. The local guide arranged by Travelora was fantastic and extremely knowledgeable."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="reviewer-info">
+                        <h4>Aarav Sharma</h4>
+                        <span>Mumbai, India</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card glassmorphic-subtle">
+                <p class="review">"A seamless experience planning our spiritual journey to Badrinath. The recommended stays were exceptionally peaceful."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="reviewer-info">
+                        <h4>Neha Patel</h4>
+                        <span>Ahmedabad, India</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card glassmorphic-subtle">
+                <p class="review">"Jim Corbett safari was thrilling! We spotted a tiger thanks to the expert tips provided in the recommended itinerary."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="reviewer-info">
+                        <h4>Rohan Desai</h4>
+                        <span>Pune, India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Chatbot -->
     <div id="chatWidget">
-        <div id="chatWindow" class="chat-window hide">
+        <div id="chatWindow" class="chat-window hide glassmorphic-modal">
             <div class="chat-head">
                 <span id="chatTitle"><i class="fa-solid fa-robot"></i> Travelora AI</span>
                 <button id="chatClose">&times;</button>
@@ -123,14 +293,128 @@
             </div>
             <form class="chat-form" id="chatForm">
                 <input type="text" id="chatInput" placeholder="Ask something…" autocomplete="off">
-                <button type="submit"><i class="fa-solid fa-arrow-up"></i></button>
+                <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
-        <button id="chatToggle" class="fab"><i class="fa-solid fa-comments"></i></button>
+        <button id="chatToggle" class="fab"><i class="fa-solid fa-sparkles"></i></button>
     </div>
 
-    <footer>
-        <p id="footerText">&copy; 2026 Travelora · Made for Uttarakhand Tourism</p>
+    <!-- Trip Planner Panel -->
+    <div id="tripPanel" class="trip-panel glassmorphic-modal">
+        <div class="trip-header">
+            <h3><i class="fa-solid fa-route"></i> Trip Planner</h3>
+            <button id="tripClose" class="trip-close">&times;</button>
+        </div>
+        <div class="trip-body" id="tripBody">
+            <p class="trip-empty" id="tripEmpty">Add places from the cards below to plan your route.</p>
+        </div>
+        <div class="trip-footer" id="tripFooter" style="display:none;">
+            <div class="trip-stats">
+                <span id="tripDistance"><i class="fa-solid fa-road"></i> 0 km</span>
+                <span id="tripStops"><i class="fa-solid fa-location-dot"></i> 0 stops</span>
+            </div>
+            <button id="tripOptimize" class="btn-solid" style="margin-top:.6rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> Optimize Route</button>
+            <button id="openCostCalc" class="btn-outline" style="margin-top:.5rem; width:100%; border-color:var(--accent); color:var(--accent);"><i class="fa-solid fa-calculator"></i> Estimate Trip Cost</button>
+            <a id="tripMapsLink" href="#" target="_blank" class="dir-btn" style="margin-top:.5rem;"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
+        </div>
+    </div>
+
+    <!-- Trip Cost Calculator Modal -->
+    <div id="costCalcModal" class="modal-overlay">
+        <div class="modal-box glassmorphic-modal" style="max-width:500px;">
+            <button class="modal-close" id="costCalcClose">&times;</button>
+            <h2 id="costCalcTitle"><i class="fa-solid fa-calculator"></i> Trip Cost Calculator</h2>
+            <p class="modal-sub">Powered by AI to estimate your travel expenses.</p>
+            <form id="costCalcForm">
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <input type="text" id="calcSource" placeholder="Source City (e.g., Delhi)" required style="flex:1;">
+                    <input type="text" id="calcDest" placeholder="Destination (e.g., Auli)" required style="flex:1;">
+                </div>
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <select id="calcTransport" class="form-input" style="flex:1;" required>
+                        <option value="" disabled selected>Transport</option>
+                        <option value="flight">Flight</option>
+                        <option value="train">Train</option>
+                        <option value="bus">Bus</option>
+                        <option value="self_drive">Self Drive</option>
+                        <option value="shared_jeep">Shared Jeep</option>
+                    </select>
+                    <select id="calcHotel" class="form-input" style="flex:1;" required>
+                        <option value="" disabled selected>Hotel Type</option>
+                        <option value="budget">Budget</option>
+                        <option value="standard">Standard</option>
+                        <option value="deluxe">Deluxe</option>
+                        <option value="luxury">Luxury</option>
+                    </select>
+                </div>
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <select id="calcSeason" class="form-input" style="flex:1;" required>
+                        <option value="" disabled selected>Season</option>
+                        <option value="peak_summer">Peak Summer</option>
+                        <option value="festive">Festive (Sep-Oct)</option>
+                        <option value="winter_peak">Winter Peak</option>
+                        <option value="shoulder">Shoulder</option>
+                        <option value="off_season">Off Season</option>
+                    </select>
+                    <input type="number" id="calcDistance" placeholder="Distance (km)" required style="flex:1;" min="10">
+                </div>
+                <div style="display:flex; gap:10px; margin-bottom:15px;">
+                    <input type="number" id="calcDays" placeholder="Days" required style="flex:1;" min="1">
+                    <input type="number" id="calcPeople" placeholder="People" required style="flex:1;" min="1">
+                </div>
+                <button type="submit" id="calcSubmitBtn" class="btn-solid">Calculate Estimate</button>
+            </form>
+            
+            <div id="calcResult" style="display:none; margin-top:20px; text-align:center; padding:15px; background:rgba(42,89,52,0.1); border-radius:8px; border:1px solid rgba(42,89,52,0.3);">
+                <span style="font-size:0.9rem; color:var(--text-light);">Estimated Total Cost</span>
+                <h3 id="calcResultVal" style="color:var(--primary); font-size:1.8rem; margin:5px 0;"></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trip Planner Toggle -->
+    <button id="tripToggle" class="trip-fab">
+        <i class="fa-solid fa-route"></i>
+        <span class="trip-badge" id="tripBadge">0</span>
+    </button>
+
+    <footer class="refined-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Travelora</h3>
+                <p>Curating extraordinary experiences in the heart of the Himalayas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="#">Destinations</a>
+                <a href="#">Tours</a>
+                <a href="#">Hotels</a>
+                <a href="#">Gallery</a>
+            </div>
+            <div class="footer-links">
+                <h4>Information</h4>
+                <a href="#">About Us</a>
+                <a href="#">Travel Guidelines</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe for seasonal travel inspiration.</p>
+                <div class="newsletter-input">
+                    <input type="email" placeholder="Your email address">
+                    <button><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p id="footerText">&copy; 2026 Travelora · Made for Uttarakhand Tourism</p>
+        </div>
     </footer>
 
     <script type="module" src="script.js"></script>
