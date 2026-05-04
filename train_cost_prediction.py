@@ -11,7 +11,7 @@ import pickle
 def main():
     print("Loading dataset...")
     # Load the JSON dataset from the parent directory as specified
-    dataset_path = r"C:\Users\kanakpreet kaur\OneDrive\Documents\uttarakhand_travel_dataset_300.json"
+    dataset_path = "cost_prediction_dataset.json"
     with open(dataset_path, "r", encoding="utf-8") as f:
         full_json = json.load(f)
     

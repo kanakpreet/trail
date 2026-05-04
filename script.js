@@ -199,49 +199,49 @@ let savedLang = localStorage.getItem('lang') || 'en';
    ═══════════════════════════════════════ */
 const places = [
     // ── Shopping ──
-    { title: "Paltan Bazaar, Dehradun",        cat: "shopping", desc: "Bustling market street for woollen shawls, basmati rice and local handicrafts.",        rating: 4.3, lat: 30.3255, lng: 78.0413, icon: "fa-bag-shopping",  guide: "Rajesh Negi",      guidePhone: "+91 94100 23456" },
-    { title: "Mall Road, Mussoorie",            cat: "shopping", desc: "Hill-station promenade lined with souvenir shops, cafés and woollen goods.",            rating: 4.4, lat: 30.4548, lng: 78.0756, icon: "fa-store",         guide: "Sunita Rawat",     guidePhone: "+91 98370 12345" },
-    { title: "Tibetan Market, Dehradun",        cat: "shopping", desc: "Pocket-friendly spot for jackets, bags and Tibetan artefacts.",                        rating: 4.2, lat: 30.3165, lng: 78.0322, icon: "fa-bag-shopping",  guide: "Tenzin Dorje",     guidePhone: "+91 87910 56789" },
+    { title: "Paltan Bazaar, Dehradun", img: "images/paltan_bazaar__dehradun.jpg",        cat: "shopping", desc: "Bustling market street for woollen shawls, basmati rice and local handicrafts.",        rating: 4.3, lat: 30.3255, lng: 78.0413, icon: "fa-bag-shopping",  guide: "Rajesh Negi",      guidePhone: "+91 94100 23456" },
+    { title: "Mall Road, Mussoorie", img: "images/mall_road__mussoorie.jpg",            cat: "shopping", desc: "Hill-station promenade lined with souvenir shops, cafés and woollen goods.",            rating: 4.4, lat: 30.4548, lng: 78.0756, icon: "fa-store",         guide: "Sunita Rawat",     guidePhone: "+91 98370 12345" },
+    { title: "Tibetan Market, Dehradun", img: "images/tibetan_market__dehradun.jpg",        cat: "shopping", desc: "Pocket-friendly spot for jackets, bags and Tibetan artefacts.",                        rating: 4.2, lat: 30.3165, lng: 78.0322, icon: "fa-bag-shopping",  guide: "Tenzin Dorje",     guidePhone: "+91 87910 56789" },
 
     // ── Food ──
-    { title: "Orchard, Mussoorie",              cat: "food", desc: "Iconic restaurant serving Garhwali thali, maggi and pahadi chai with valley views.",       rating: 4.6, lat: 30.4598, lng: 78.0649, icon: "fa-utensils",      guide: "Deepak Bisht",     guidePhone: "+91 97195 34567" },
-    { title: "Café Ivy, Rishikesh",             cat: "food", desc: "Cozy riverside café known for Israeli and Italian food among backpackers.",                rating: 4.5, lat: 30.1086, lng: 78.2960, icon: "fa-mug-hot",       guide: "Priya Sharma",     guidePhone: "+91 94560 78901" },
-    { title: "Chotiwala, Rishikesh",            cat: "food", desc: "Legendary vegetarian restaurant on the ghats — a Rishikesh landmark since 1958.",         rating: 4.4, lat: 30.1095, lng: 78.2935, icon: "fa-utensils",      guide: "Anil Pant",        guidePhone: "+91 98970 45612" },
+    { title: "Orchard, Mussoorie", img: "images/orchard__mussoorie.jpg",              cat: "food", desc: "Iconic restaurant serving Garhwali thali, maggi and pahadi chai with valley views.",       rating: 4.6, lat: 30.4598, lng: 78.0649, icon: "fa-utensils",      guide: "Deepak Bisht",     guidePhone: "+91 97195 34567" },
+    { title: "Café Ivy, Rishikesh", img: "images/caf__ivy__rishikesh.jpg",             cat: "food", desc: "Cozy riverside café known for Israeli and Italian food among backpackers.",                rating: 4.5, lat: 30.1086, lng: 78.2960, icon: "fa-mug-hot",       guide: "Priya Sharma",     guidePhone: "+91 94560 78901" },
+    { title: "Chotiwala, Rishikesh", img: "images/chotiwala__rishikesh.jpg",            cat: "food", desc: "Legendary vegetarian restaurant on the ghats — a Rishikesh landmark since 1958.",         rating: 4.4, lat: 30.1095, lng: 78.2935, icon: "fa-utensils",      guide: "Anil Pant",        guidePhone: "+91 98970 45612" },
 
     // ── Tourist Spots ──
-    { title: "Valley of Flowers, Chamoli",      cat: "spots", desc: "UNESCO World Heritage site with 600+ species of wildflowers in a high-altitude valley.", rating: 4.9, lat: 30.7280, lng: 79.6050, icon: "fa-mountain-sun",  guide: "Mohan Bhatt",      guidePhone: "+91 94120 67890" },
-    { title: "Nainital Lake",                   cat: "spots", desc: "Crescent-shaped freshwater lake surrounded by hills — heart of the Lake District.",       rating: 4.7, lat: 29.3919, lng: 79.4542, icon: "fa-water",         guide: "Kavita Joshi",     guidePhone: "+91 98080 23456" },
-    { title: "Auli Ski Resort",                 cat: "spots", desc: "India's premier ski destination with panoramic views of Nanda Devi.",                     rating: 4.8, lat: 30.5269, lng: 79.5670, icon: "fa-person-skiing",  guide: "Vikram Singh",     guidePhone: "+91 97580 11223" },
-    { title: "Rishikesh River Rafting",         cat: "spots", desc: "White-water rafting on the Ganges — Grade III & IV rapids with stunning gorge scenery.",  rating: 4.7, lat: 30.0869, lng: 78.2676, icon: "fa-water",         guide: "Sanjay Rana",      guidePhone: "+91 88260 99887" },
+    { title: "Valley of Flowers, Chamoli", img: "images/valley_of_flowers__chamoli.jpg",      cat: "spots", desc: "UNESCO World Heritage site with 600+ species of wildflowers in a high-altitude valley.", rating: 4.9, lat: 30.7280, lng: 79.6050, icon: "fa-mountain-sun",  guide: "Mohan Bhatt",      guidePhone: "+91 94120 67890" },
+    { title: "Nainital Lake", img: "images/nainital_lake.jpg",                   cat: "spots", desc: "Crescent-shaped freshwater lake surrounded by hills — heart of the Lake District.",       rating: 4.7, lat: 29.3919, lng: 79.4542, icon: "fa-water",         guide: "Kavita Joshi",     guidePhone: "+91 98080 23456" },
+    { title: "Auli Ski Resort", img: "images/auli_ski_resort.jpg",                 cat: "spots", desc: "India's premier ski destination with panoramic views of Nanda Devi.",                     rating: 4.8, lat: 30.5269, lng: 79.5670, icon: "fa-person-skiing",  guide: "Vikram Singh",     guidePhone: "+91 97580 11223" },
+    { title: "Rishikesh River Rafting", img: "images/rishikesh_river_rafting.jpg",         cat: "spots", desc: "White-water rafting on the Ganges — Grade III & IV rapids with stunning gorge scenery.",  rating: 4.7, lat: 30.0869, lng: 78.2676, icon: "fa-water",         guide: "Sanjay Rana",      guidePhone: "+91 88260 99887" },
 
     // ── Temples & Monasteries ──
-    { title: "Kedarnath Temple",                cat: "temples", desc: "One of the twelve Jyotirlingas, set at 3,583 m amidst snow-capped peaks.",              rating: 4.9, lat: 30.7352, lng: 79.0669, icon: "fa-om",            guide: "Pandit Ramesh",    guidePhone: "+91 94110 55667" },
-    { title: "Badrinath Temple",                cat: "temples", desc: "Sacred Char Dham shrine dedicated to Lord Vishnu on the banks of Alaknanda.",           rating: 4.9, lat: 30.7433, lng: 79.4938, icon: "fa-om",            guide: "Govind Joshi",     guidePhone: "+91 98370 44556" },
-    { title: "Mindrolling Monastery, Dehradun", cat: "temples", desc: "One of the largest Buddhist centres in India with a 60-m Great Stupa.",                 rating: 4.7, lat: 30.2863, lng: 78.0772, icon: "fa-vihara",        guide: "Lama Tsering",     guidePhone: "+91 87560 33221" },
-    { title: "Har Ki Pauri, Haridwar",          cat: "temples", desc: "Ancient bathing ghat on the Ganges famous for the spectacular evening Ganga Aarti.",    rating: 4.8, lat: 29.9557, lng: 78.1690, icon: "fa-om",            guide: "Suresh Tiwari",    guidePhone: "+91 94570 77889" },
+    { title: "Kedarnath Temple", img: "images/kedarnath_temple.jpg",                cat: "temples", desc: "One of the twelve Jyotirlingas, set at 3,583 m amidst snow-capped peaks.",              rating: 4.9, lat: 30.7352, lng: 79.0669, icon: "fa-om",            guide: "Pandit Ramesh",    guidePhone: "+91 94110 55667" },
+    { title: "Badrinath Temple", img: "images/badrinath_temple_1777917983095.png",                cat: "temples", desc: "Sacred Char Dham shrine dedicated to Lord Vishnu on the banks of Alaknanda.",           rating: 4.9, lat: 30.7433, lng: 79.4938, icon: "fa-om",            guide: "Govind Joshi",     guidePhone: "+91 98370 44556" },
+    { title: "Mindrolling Monastery, Dehradun", img: "images/mindrolling_monastery_1777918126459.png", cat: "temples", desc: "One of the largest Buddhist centres in India with a 60-m Great Stupa.",                 rating: 4.7, lat: 30.2863, lng: 78.0772, icon: "fa-vihara",        guide: "Lama Tsering",     guidePhone: "+91 87560 33221" },
+    { title: "Har Ki Pauri, Haridwar", img: "images/har_ki_pauri_1777918068835.png",          cat: "temples", desc: "Ancient bathing ghat on the Ganges famous for the spectacular evening Ganga Aarti.",    rating: 4.8, lat: 29.9557, lng: 78.1690, icon: "fa-om",            guide: "Suresh Tiwari",    guidePhone: "+91 94570 77889" },
 
     // ── Shopping (additional) ──
-    { title: "Bara Bazaar, Almora",             cat: "shopping", desc: "Century-old horseshoe-shaped market famous for copper utensils, Angora wool and Almora sweets.", rating: 4.3, lat: 29.5971, lng: 79.6591, icon: "fa-bag-shopping",  guide: "Harish Pandey",    guidePhone: "+91 94120 88321" },
-    { title: "Nainital Mall Road",              cat: "shopping", desc: "Bustling lakeside stretch with candle shops, woollen boutiques and handmade jewellery stalls.", rating: 4.5, lat: 29.3803, lng: 79.4636, icon: "fa-store",         guide: "Meera Arya",       guidePhone: "+91 98370 55214" },
-    { title: "Gandhi Chowk, Mussoorie",         cat: "shopping", desc: "Lively square with branded stores, local handicraft shops and street food vendors.",           rating: 4.2, lat: 30.4591, lng: 78.0686, icon: "fa-bag-shopping",  guide: "Pooja Semwal",     guidePhone: "+91 87560 41298" },
-    { title: "Jhula Market, Haridwar",          cat: "shopping", desc: "Traditional market near Laxmi Jhula selling puja items, rudraksha beads and Ayurvedic herbs.", rating: 4.1, lat: 30.1212, lng: 78.3150, icon: "fa-store",         guide: "Ashok Nautiyal",   guidePhone: "+91 94100 62789" },
+    { title: "Bara Bazaar, Almora", img: "images/bara_bazaar_1777918000033.png",             cat: "shopping", desc: "Century-old horseshoe-shaped market famous for copper utensils, Angora wool and Almora sweets.", rating: 4.3, lat: 29.5971, lng: 79.6591, icon: "fa-bag-shopping",  guide: "Harish Pandey",    guidePhone: "+91 94120 88321" },
+    { title: "Nainital Mall Road", img: "images/nainital_mall_road_1777918145711.png",              cat: "shopping", desc: "Bustling lakeside stretch with candle shops, woollen boutiques and handmade jewellery stalls.", rating: 4.5, lat: 29.3803, lng: 79.4636, icon: "fa-store",         guide: "Meera Arya",       guidePhone: "+91 98370 55214" },
+    { title: "Gandhi Chowk, Mussoorie", img: "images/gandhi_chowk_1777918050059.png",         cat: "shopping", desc: "Lively square with branded stores, local handicraft shops and street food vendors.",           rating: 4.2, lat: 30.4591, lng: 78.0686, icon: "fa-bag-shopping",  guide: "Pooja Semwal",     guidePhone: "+91 87560 41298" },
+    { title: "Jhula Market, Haridwar", img: "images/jhula_market_1777918085195.png",          cat: "shopping", desc: "Traditional market near Laxmi Jhula selling puja items, rudraksha beads and Ayurvedic herbs.", rating: 4.1, lat: 30.1212, lng: 78.3150, icon: "fa-store",         guide: "Ashok Nautiyal",   guidePhone: "+91 94100 62789" },
 
     // ── Food (additional) ──
-    { title: "Sakley's, Landour",               cat: "food", desc: "Heritage bakehouse in Landour serving legendary plum cakes, pies and hot chocolate since 1930.",      rating: 4.7, lat: 30.4656, lng: 78.0816, icon: "fa-cake-candles",  guide: "Ritu Kapoor",      guidePhone: "+91 97190 23415" },
-    { title: "Chandni Chowk, Haridwar",         cat: "food", desc: "Famous street-food lane for kachoris, chaat, jalebis and rabri — a vegetarian paradise.",             rating: 4.4, lat: 29.9485, lng: 78.1697, icon: "fa-utensils",      guide: "Manoj Gairola",    guidePhone: "+91 88267 34521" },
-    { title: "Little Buddha Café, Rishikesh",   cat: "food", desc: "Rooftop café overlooking the Ganges with smoothie bowls, falafel wraps and live acoustic music.",    rating: 4.5, lat: 30.1120, lng: 78.3145, icon: "fa-mug-hot",       guide: "Neha Chauhan",     guidePhone: "+91 94560 12344" },
-    { title: "Sonam Momos, Dehradun",           cat: "food", desc: "Iconic roadside stall serving steaming Tibetan momos with fiery red chutney since the 1980s.",       rating: 4.3, lat: 30.3197, lng: 78.0399, icon: "fa-utensils",      guide: "Tashi Lhamo",      guidePhone: "+91 87910 78560" },
+    { title: "Sakley's, Landour", img: "images/sakleys_landour_1777918159469.png",               cat: "food", desc: "Heritage bakehouse in Landour serving legendary plum cakes, pies and hot chocolate since 1930.",      rating: 4.7, lat: 30.4656, lng: 78.0816, icon: "fa-cake-candles",  guide: "Ritu Kapoor",      guidePhone: "+91 97190 23415" },
+    { title: "Chandni Chowk, Haridwar", img: "images/chandni_chowk_haridwar_1777918020641.png",         cat: "food", desc: "Famous street-food lane for kachoris, chaat, jalebis and rabri — a vegetarian paradise.",             rating: 4.4, lat: 29.9485, lng: 78.1697, icon: "fa-utensils",      guide: "Manoj Gairola",    guidePhone: "+91 88267 34521" },
+    { title: "Little Buddha Café, Rishikesh", img: "images/little_buddha_cafe_1777918111676.png",   cat: "food", desc: "Rooftop café overlooking the Ganges with smoothie bowls, falafel wraps and live acoustic music.",    rating: 4.5, lat: 30.1120, lng: 78.3145, icon: "fa-mug-hot",       guide: "Neha Chauhan",     guidePhone: "+91 94560 12344" },
+    { title: "Sonam Momos, Dehradun", img: "images/sonam_momos_1777918176312.png",           cat: "food", desc: "Iconic roadside stall serving steaming Tibetan momos with fiery red chutney since the 1980s.",       rating: 4.3, lat: 30.3197, lng: 78.0399, icon: "fa-utensils",      guide: "Tashi Lhamo",      guidePhone: "+91 87910 78560" },
 
     // ── Tourist Spots (additional) ──
-    { title: "Chopta–Tungnath Trek",            cat: "spots", desc: "Mini Switzerland trek leading to the world's highest Shiva temple at 3,680 m.",                     rating: 4.8, lat: 30.4892, lng: 79.2178, icon: "fa-mountain-sun",  guide: "Bhupesh Rawat",    guidePhone: "+91 97580 44321" },
-    { title: "Jim Corbett National Park",       cat: "spots", desc: "India's oldest national park — home to Bengal tigers, elephants and 600+ bird species.",             rating: 4.7, lat: 29.5300, lng: 78.7747, icon: "fa-paw",           guide: "Dinesh Bisht",     guidePhone: "+91 94120 99876" },
-    { title: "Kempty Falls, Mussoorie",         cat: "spots", desc: "Spectacular 40-ft waterfall nestled in the hills — a popular picnic spot since the British era.",    rating: 4.4, lat: 30.4925, lng: 78.0264, icon: "fa-water",         guide: "Naveen Gusain",    guidePhone: "+91 98080 71234" },
-    { title: "Roopkund Trek, Chamoli",          cat: "spots", desc: "Mysterious skeletal lake at 5,029 m surrounded by snow peaks — one of India's most thrilling treks.", rating: 4.9, lat: 30.2622, lng: 79.7314, icon: "fa-mountain-sun",  guide: "Ratan Singh",      guidePhone: "+91 88260 55678" },
+    { title: "Chopta–Tungnath Trek", img: "images/chopta_trek_1777918034596.png",            cat: "spots", desc: "Mini Switzerland trek leading to the world's highest Shiva temple at 3,680 m.",                     rating: 4.8, lat: 30.4892, lng: 79.2178, icon: "fa-mountain-sun",  guide: "Bhupesh Rawat",    guidePhone: "+91 97580 44321" },
+    { title: "Jim Corbett National Park", img: "images/jim_corbett_1777918098246.png",       cat: "spots", desc: "India's oldest national park — home to Bengal tigers, elephants and 600+ bird species.",             rating: 4.7, lat: 29.5300, lng: 78.7747, icon: "fa-paw",           guide: "Dinesh Bisht",     guidePhone: "+91 94120 99876" },
+    { title: "Kempty Falls, Mussoorie", img: "images/kempty_falls__mussoorie.jpg",         cat: "spots", desc: "Spectacular 40-ft waterfall nestled in the hills — a popular picnic spot since the British era.",    rating: 4.4, lat: 30.4925, lng: 78.0264, icon: "fa-water",         guide: "Naveen Gusain",    guidePhone: "+91 98080 71234" },
+    { title: "Roopkund Trek, Chamoli", img: "images/roopkund_trek__chamoli.jpg",          cat: "spots", desc: "Mysterious skeletal lake at 5,029 m surrounded by snow peaks — one of India's most thrilling treks.", rating: 4.9, lat: 30.2622, lng: 79.7314, icon: "fa-mountain-sun",  guide: "Ratan Singh",      guidePhone: "+91 88260 55678" },
 
     // ── Temples & Monasteries (additional) ──
-    { title: "Tungnath Temple, Rudraprayag",    cat: "temples", desc: "Highest Panch Kedar shrine at 3,680 m — a 1,000-year-old temple amidst alpine meadows.",          rating: 4.8, lat: 30.4897, lng: 79.2183, icon: "fa-om",            guide: "Mahesh Juyal",     guidePhone: "+91 94110 23345" },
-    { title: "Jageshwar Dham, Almora",          cat: "temples", desc: "Cluster of 124 ancient stone temples in a dense deodar forest — an archaeological gem.",           rating: 4.6, lat: 29.6377, lng: 79.8519, icon: "fa-om",            guide: "Prabhat Tewari",   guidePhone: "+91 98370 88990" },
-    { title: "Naina Devi Temple, Nainital",     cat: "temples", desc: "Sacred Shakti Peetha on the northern shore of Nainital Lake with stunning lake views.",            rating: 4.5, lat: 29.3947, lng: 79.4556, icon: "fa-om",            guide: "Kamla Joshi",      guidePhone: "+91 87560 11234" },
+    { title: "Tungnath Temple, Rudraprayag", img: "images/tungnath_temple__rudraprayag.jpg",    cat: "temples", desc: "Highest Panch Kedar shrine at 3,680 m — a 1,000-year-old temple amidst alpine meadows.",          rating: 4.8, lat: 30.4897, lng: 79.2183, icon: "fa-om",            guide: "Mahesh Juyal",     guidePhone: "+91 94110 23345" },
+    { title: "Jageshwar Dham, Almora", img: "images/jageshwar_dham_1777918191591.png",          cat: "temples", desc: "Cluster of 124 ancient stone temples in a dense deodar forest — an archaeological gem.",           rating: 4.6, lat: 29.6377, lng: 79.8519, icon: "fa-om",            guide: "Prabhat Tewari",   guidePhone: "+91 98370 88990" },
+    { title: "Naina Devi Temple, Nainital", img: "images/naina_devi_temple__nainital.jpg",     cat: "temples", desc: "Sacred Shakti Peetha on the northern shore of Nainital Lake with stunning lake views.",            rating: 4.5, lat: 29.3947, lng: 79.4556, icon: "fa-om",            guide: "Kamla Joshi",      guidePhone: "+91 87560 11234" },
 ];
 
 let placesData = []; // Will be populated from Firestore
@@ -362,7 +362,7 @@ function render(selectedCats) {
         return `
         <div class="card">
             <div class="card-img-container">
-                <img src="${getImageForCategory(p.cat, p.title)}" class="card-img" alt="${p.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img src="${p.img || getImageForCategory(p.cat, p.title)}" class="card-img" alt="${p.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <i class="fa-solid ${p.icon} card-fallback-icon" style="display:none;"></i>
             </div>
             <div class="card-body">
@@ -880,7 +880,7 @@ function renderRecommendations() {
         return `
         <div class="card rec-card">
             <div class="card-img-container">
-                <img src="${getImageForCategory(p.cat, p.title)}" class="card-img" alt="${p.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img src="${p.img || getImageForCategory(p.cat, p.title)}" class="card-img" alt="${p.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <i class="fa-solid ${p.icon} card-fallback-icon" style="display:none;"></i>
             </div>
             <div class="card-body">
@@ -914,7 +914,7 @@ function renderRecommendations() {
    Floating Action Buttons (Chat & Trip)
    ═══════════════════════════════════════ */
 const chatToggle = document.getElementById('chatToggle');
-const chatWindow = document.getElementById('chatWindow');
+// chatWindow already declared above
 const chatClose = document.getElementById('chatClose');
 
 if (chatToggle && chatWindow) {
@@ -933,13 +933,6 @@ const tripCloseBtn = document.getElementById('tripClose');
 if (tripToggleBtn && tripPanel) {
     // Show the button initially
     tripToggleBtn.style.display = 'flex';
-    
-    tripToggleBtn.addEventListener('click', () => {
-        tripPanel.classList.add('show');
-    });
-    tripCloseBtn.addEventListener('click', () => {
-        tripPanel.classList.remove('show');
-    });
 }
 
 /* ═══════════════════════════════════════
@@ -1046,7 +1039,7 @@ renderRecommendations();
    Trip Planner & Route Optimization
    ═══════════════════════════════════════ */
 let tripPlaces = JSON.parse(localStorage.getItem('tripPlaces') || '[]');
-const tripPanel = document.getElementById('tripPanel');
+// tripPanel already declared above
 const tripToggle = document.getElementById('tripToggle');
 const tripBadge = document.getElementById('tripBadge');
 const tripBody = document.getElementById('tripBody');
