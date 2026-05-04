@@ -492,6 +492,16 @@ body.dark .chat-form { background: rgba(0,0,0,0.2); border-top-color: rgba(255,2
 .trip-fab:hover { transform: scale(1.05); }
 .trip-badge { position: absolute; top: -5px; right: -5px; width: 24px; height: 24px; border-radius: 50%; background: #EF4444; color: #fff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 
+/* ── Discovery Cards ── */
+.discovery-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.8rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; transition: transform var(--transition); }
+body.dark .discovery-card { background: rgba(0,0,0,0.2); }
+.discovery-card:hover { transform: translateX(5px); }
+.discovery-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(42,89,52,0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.discovery-info { flex: 1; }
+.discovery-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+.discovery-type { font-size: 0.75rem; color: var(--muted); }
+.discovery-add { background: none; border: 1px solid var(--border); border-radius: 50%; width: 28px; height: 28px; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition); }
+.discovery-add:hover { background: var(--primary); color: #fff; }
 /* ── Auth Gate ── */
 body.auth-gate #navbar, body.auth-gate .hero, body.auth-gate .section, body.auth-gate #chatWidget, body.auth-gate footer { filter: blur(8px); pointer-events: none; user-select: none; }
 body.auth-gate .modal-overlay .modal-close { display: none; }

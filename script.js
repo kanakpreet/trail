@@ -1,20 +1,33 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { getFirestore, collection, onSnapshot, getDocs, addDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+// Firebase SDK loaded dynamically so failures don't crash the entire app
+let firebaseApp = null;
+let firestoreDb = null;
+let firestoreFns = {};
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBn4k9T1Ce0yli7YvieBP5a9ZpjuaYGp0M",
-  authDomain: "tourism-app-c4fed.firebaseapp.com",
-  projectId: "tourism-app-c4fed",
-  storageBucket: "tourism-app-c4fed.firebasestorage.app",
-  messagingSenderId: "168320142217",
-  appId: "1:168320142217:web:ca469d2eef4ec196476f58",
-  measurementId: "G-2NGLHY44XD"
-};
+try {
+  const fbApp = await import("https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js");
+  const fbFs  = await import("https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js");
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+  const firebaseConfig = {
+    apiKey: "AIzaSyBn4k9T1Ce0yli7YvieBP5a9ZpjuaYGp0M",
+    authDomain: "tourism-app-c4fed.firebaseapp.com",
+    projectId: "tourism-app-c4fed",
+    storageBucket: "tourism-app-c4fed.firebasestorage.app",
+    messagingSenderId: "168320142217",
+    appId: "1:168320142217:web:ca469d2eef4ec196476f58",
+    measurementId: "G-2NGLHY44XD"
+  };
+
+  firebaseApp = fbApp.initializeApp(firebaseConfig);
+  firestoreDb = fbFs.getFirestore(firebaseApp);
+  firestoreFns = { collection: fbFs.collection, onSnapshot: fbFs.onSnapshot, getDocs: fbFs.getDocs, addDoc: fbFs.addDoc, doc: fbFs.doc, setDoc: fbFs.setDoc };
+  console.log("Firebase loaded successfully.");
+} catch (err) {
+  console.warn("Firebase unavailable, using local data:", err.message);
+}
+
+// Session State
+let currentUser = localStorage.getItem('userEmail') ? { email: localStorage.getItem('userEmail') } : null;
+
 
 /* ═══════════════════════════════════════
    Localization Dictionary
@@ -233,6 +246,19 @@ const places = [
 
 let placesData = []; // Will be populated from Firestore
 
+// ── Mock Dataset for Route-Aware Discovery ──
+const enRouteDiscoveries = [
+    { title: "Scenic Chai Point", type: "Refreshment", icon: "fa-mug-hot", lat: 30.3300, lng: 78.0400 },
+    { title: "Clean Washroom Stop", type: "Facility", icon: "fa-restroom", lat: 30.4000, lng: 78.0800 },
+    { title: "EV Charging Station", type: "Utility", icon: "fa-charging-station", lat: 30.3500, lng: 78.1000 },
+    { title: "Hidden Valley Viewpoint", type: "Scenic", icon: "fa-camera", lat: 30.4600, lng: 78.0500 },
+    { title: "Quiet Forest Temple", type: "Spiritual", icon: "fa-om", lat: 30.2900, lng: 78.0200 },
+    { title: "Kid-friendly Dhaba", type: "Food", icon: "fa-child", lat: 30.3700, lng: 78.0700 },
+    { title: "Ghat Aarti Steps", type: "Culture", icon: "fa-bell", lat: 30.0800, lng: 78.2600 },
+    { title: "Riverside Picnic Spot", type: "Leisure", icon: "fa-tree", lat: 30.1200, lng: 78.2800 },
+    { title: "Local Handicraft Stall", type: "Shopping", icon: "fa-bag-shopping", lat: 30.2000, lng: 78.1500 }
+];
+
 /* ═══════════════════════════════════════
    Simulated Crowd Tracker
    ═══════════════════════════════════════ */
@@ -243,31 +269,53 @@ function predictCrowdLevel(place) {
     const month = now.getMonth();
     const hash = place.title.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
     let score = 30;
+    let reasons = [];
+
     // Time-of-day
-    if (hour >= 10 && hour <= 16) score += 20;
-    else if ((hour >= 7 && hour <= 9) || (hour >= 17 && hour <= 19)) score += 10;
-    else score -= 5;
+    if (hour >= 10 && hour <= 16) { score += 20; reasons.push("peak visiting hours"); }
+    else if ((hour >= 7 && hour <= 9) || (hour >= 17 && hour <= 19)) { score += 10; reasons.push("shoulder hours"); }
+    else { score -= 5; reasons.push("off-peak hours"); }
+    
     // Weekend
-    if (day === 0 || day === 6) score += 15;
+    if (day === 0 || day === 6) { score += 15; reasons.push("the weekend"); }
+    
     // Season
-    if (month >= 4 && month <= 5) score += 18;
-    if (month >= 8 && month <= 9) score += 12;
-    if (month === 11 || month === 0 || month === 1) score -= 8;
+    if (month >= 4 && month <= 5) { score += 18; reasons.push("summer tourist season"); }
+    if (month >= 8 && month <= 9) { score += 12; reasons.push("festive season"); }
+    if (month === 11 || month === 0 || month === 1) { score -= 8; reasons.push("winter off-season"); }
+    
     // Category patterns
-    if (place.cat === 'temples') { if (month >= 4 && month <= 9) score += 10; if (day === 0) score += 8; }
-    if (place.cat === 'spots') { if (month >= 4 && month <= 6) score += 12; }
-    if (place.cat === 'food') { if (hour >= 12 && hour <= 14) score += 15; if (hour >= 19 && hour <= 21) score += 12; }
-    if (place.cat === 'shopping') { if (hour >= 11 && hour <= 18) score += 8; if (day === 0 || day === 6) score += 10; }
+    if (place.cat === 'temples') { 
+        if (month >= 4 && month <= 9) { score += 10; reasons.push("pilgrimage season"); }
+        if (day === 0) { score += 8; reasons.push("Sunday prayers"); }
+    }
+    if (place.cat === 'spots') { if (month >= 4 && month <= 6) { score += 12; reasons.push("clear weather"); } }
+    if (place.cat === 'food') { 
+        if (hour >= 12 && hour <= 14) { score += 15; reasons.push("lunch time"); }
+        if (hour >= 19 && hour <= 21) { score += 12; reasons.push("dinner time"); }
+    }
+    if (place.cat === 'shopping') { 
+        if (hour >= 11 && hour <= 18) { score += 8; reasons.push("market hours"); }
+    }
+    
     // Rating-based popularity
+    if (place.rating > 4.5) reasons.push("high local popularity");
     score += Math.round((place.rating - 4.0) * 10);
+    
     // Per-place deterministic jitter
     score += (hash % 13) - 6;
     score = Math.max(5, Math.min(95, score));
+    
     let label, color;
     if (score < 35) { label = "Low"; color = "#16a34a"; }
     else if (score < 65) { label = "Moderate"; color = "#f59e0b"; }
     else { label = "High"; color = "#ef4444"; }
-    return { label, color, percent: score };
+    
+    // Deduplicate and format reasons
+    let uniqueReasons = [...new Set(reasons)].slice(0, 2);
+    let explanation = `Crowd is ${label.toLowerCase()} because it's ${uniqueReasons.join(' and ')}.`;
+    
+    return { label, color, percent: score, explanation };
 }
 
 /* ═══════════════════════════════════════
@@ -332,6 +380,9 @@ function render(selectedCats) {
                         <span class="crowd-label" style="color:${crowd.color}">${crowdLabel} (${crowd.percent}%)</span>
                     </div>
                     <div class="crowd-track"><div class="crowd-fill" style="width:${crowd.percent}%;background:${crowd.color}"></div></div>
+                    <div class="crowd-explain" style="font-size:0.75rem; color:var(--muted); margin-top:0.4rem; line-height: 1.3;">
+                        <i class="fa-solid fa-circle-info" style="color:var(--accent);"></i> ${crowd.explanation}
+                    </div>
                 </div>
 
                 <!-- Local Guide -->
@@ -400,53 +451,58 @@ setInterval(() => render(getSelected()), 30000);
 /* ═══════════════════════════════════════
    Firestore Database Sync
    ═══════════════════════════════════════ */
-const placesRef = collection(db, 'places');
-
 let seedingInProgress = false;
 
-// Listen for real-time updates from Firestore
-onSnapshot(placesRef, async (snapshot) => {
-    if (snapshot.empty && !seedingInProgress) {
-        seedingInProgress = true;
-        console.log("No places found in DB. Seeding all places...");
-        for (const place of places) {
-            await addDoc(placesRef, place);
-        }
-        console.log("Database seeded with", places.length, "places.");
-        seedingInProgress = false;
-    } else if (!snapshot.empty) {
-        placesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if (firestoreDb && firestoreFns.collection) {
+    const { collection: fsCollection, onSnapshot: fsOnSnapshot, addDoc: fsAddDoc } = firestoreFns;
+    const placesRef = fsCollection(firestoreDb, 'places');
 
-        // Auto-seed any missing places (e.g. newly added ones) — once per load
-        if (!seedingInProgress) {
-            const existingTitles = new Set(placesData.map(p => p.title));
-            const missing = places.filter(p => !existingTitles.has(p.title));
-            if (missing.length > 0) {
-                seedingInProgress = true;
-                console.log(`Adding ${missing.length} new places to database...`);
-                for (const place of missing) {
-                    await addDoc(placesRef, place);
-                }
-                console.log("New places seeded successfully!");
-                seedingInProgress = false;
+    // Listen for real-time updates from Firestore
+    fsOnSnapshot(placesRef, async (snapshot) => {
+        if (snapshot.empty && !seedingInProgress) {
+            seedingInProgress = true;
+            console.log("No places found in DB. Seeding all places...");
+            for (const place of places) {
+                await fsAddDoc(placesRef, place);
             }
+            console.log("Database seeded with", places.length, "places.");
+            seedingInProgress = false;
+        } else if (!snapshot.empty) {
+            placesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+            // Auto-seed any missing places (e.g. newly added ones) — once per load
+            if (!seedingInProgress) {
+                const existingTitles = new Set(placesData.map(p => p.title));
+                const missing = places.filter(p => !existingTitles.has(p.title));
+                if (missing.length > 0) {
+                    seedingInProgress = true;
+                    console.log(`Adding ${missing.length} new places to database...`);
+                    for (const place of missing) {
+                        await fsAddDoc(placesRef, place);
+                    }
+                    console.log("New places seeded successfully!");
+                    seedingInProgress = false;
+                }
+            }
+
+            render(getSelected());
         }
-
+    }, (error) => {
+        console.warn("Firestore permission error, using local data:", error.message);
         render(getSelected());
-    }
-}, (error) => {
-    console.warn("Firestore permission error, using local data:", error.message);
-    render(getSelected());
-});
+    });
 
-// Utility to seed initial data (Run only once if DB is empty)
-window.seedDatabase = async () => {
-    console.log("Seeding database...");
-    for (const place of places) {
-        await addDoc(placesRef, place);
-    }
-    console.log("Database seeded successfully!");
-};
+    // Utility to seed initial data (Run only once if DB is empty)
+    window.seedDatabase = async () => {
+        console.log("Seeding database...");
+        for (const place of places) {
+            await fsAddDoc(placesRef, place);
+        }
+        console.log("Database seeded successfully!");
+    };
+} else {
+    console.log("Firestore not available. Using local places data.");
+}
 
 /* ═══════════════════════════════════════
    Login Modal
@@ -479,8 +535,11 @@ toggleAuthMode.addEventListener('click', (e) => {
 });
 
 loginBtn.addEventListener('click', () => {
-    if (auth.currentUser) {
-        signOut(auth);
+    if (currentUser) {
+        // Sign Out
+        currentUser = null;
+        localStorage.removeItem('userEmail');
+        updateAuthState();
     } else {
         loginModal.classList.add('show');
     }
@@ -498,32 +557,43 @@ loginForm.addEventListener('submit', async (e) => {
     const email = document.getElementById('authEmail').value;
     const password = document.getElementById('authPassword').value;
     
+    authSubmitBtn.textContent = 'Processing...';
+    authSubmitBtn.disabled = true;
+    
     try {
-        if (isSignUp) {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            console.log("Account created:", userCredential.user.email);
+        const endpoint = isSignUp ? 'http://127.0.0.1:5000/api/signup' : 'http://127.0.0.1:5000/api/login';
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+            console.log(isSignUp ? "Account created:" : "Logged in:", data.user.email);
+            currentUser = data.user;
+            localStorage.setItem('userEmail', data.user.email);
+            
+            loginModal.classList.remove('show');
+            loginForm.reset();
+            updateAuthState();
         } else {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            console.log("Logged in:", userCredential.user.email);
+            alert(data.error || "Authentication failed.");
         }
-        loginModal.classList.remove('show');
-        loginForm.reset();
     } catch (error) {
-        console.error("Auth error:", error.code, error.message);
-        if (error.code === 'auth/invalid-credential') {
-            alert("Login failed! That account doesn't exist or wrong password.\nTry clicking 'Sign Up' below instead.");
-        } else if (error.code === 'auth/email-already-in-use') {
-            alert("An account already exists with that email. Try signing in.");
-        } else {
-            alert("Error: " + error.message);
-        }
+        console.error("Auth error:", error);
+        alert("Could not connect to the authentication server. Ensure the Python backend is running.");
+    } finally {
+        authSubmitBtn.textContent = isSignUp ? 'Sign Up' : 'Sign In';
+        authSubmitBtn.disabled = false;
     }
 });
 
-onAuthStateChanged(auth, (user) => {
+function updateAuthState() {
     const dict = i18n[savedLang] || i18n.en;
-    if (user) {
-        loginBtn.textContent = dict.navSignOut + ' (' + user.email.split('@')[0] + ')';
+    if (currentUser) {
+        loginBtn.textContent = dict.navSignOut + ' (' + currentUser.email.split('@')[0] + ')';
         // User is signed in — unlock the explore page
         loginModal.classList.remove('show');
         document.body.classList.remove('auth-gate');
@@ -533,11 +603,10 @@ onAuthStateChanged(auth, (user) => {
         loginModal.classList.add('show');
         document.body.classList.add('auth-gate');
     }
-});
+}
 
-// Show login modal immediately on page load (auth gate)
-loginModal.classList.add('show');
-document.body.classList.add('auth-gate');
+// Check initial state
+updateAuthState();
 
 /* ═══════════════════════════════════════
    Guide Registration Modal
@@ -566,31 +635,27 @@ guideRegForm.addEventListener('submit', async (e) => {
     btn.disabled = true;
 
     try {
-        // 1. Create the user in Firebase Auth
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        // 2. Save the guide details to a Firestore 'guides' collection
-        await setDoc(doc(db, "guides", user.uid), {
-            uid: user.uid,
-            name: name,
-            email: email,
-            phone: phone,
-            role: 'guide',
-            registeredAt: new Date().toISOString()
+        const response = await fetch('http://127.0.0.1:5000/api/register_guide', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password, phone })
         });
+        
+        const data = await response.json();
 
-        console.log("Guide account created strictly:", user.email);
-        alert(`Welcome, ${name}! Your guide account has been created.`);
-        
-        guideModal.classList.remove('show');
-        guideRegForm.reset();
-        btn.textContent = 'Register';
-        btn.disabled = false;
-        
+        if (response.ok && data.success) {
+            console.log("Guide account created in MongoDB:", data.user.email);
+            alert(`Welcome, ${name}! Your guide account has been created.`);
+            
+            guideModal.classList.remove('show');
+            guideRegForm.reset();
+        } else {
+            alert(data.error || "Registration failed.");
+        }
     } catch (error) {
-        console.error("Guide Auth error:", error.code, error.message);
-        alert("Error during registration: " + error.message);
+        console.error("Guide Auth error:", error);
+        alert("Could not connect to the authentication server. Ensure the Python backend is running.");
+    } finally {
         btn.textContent = 'Register';
         btn.disabled = false;
     }
@@ -630,10 +695,10 @@ function updateLanguage(lang) {
     const dict = i18n[lang] || i18n.en;
     
     document.getElementById('navExplore').textContent = dict.navExplore;
-    if (!auth.currentUser) {
+    if (!currentUser) {
         document.getElementById('loginBtn').textContent = dict.navSignIn;
     } else {
-        document.getElementById('loginBtn').textContent = dict.navSignOut + ' (' + auth.currentUser.email.split('@')[0] + ')';
+        document.getElementById('loginBtn').textContent = dict.navSignOut + ' (' + currentUser.email.split('@')[0] + ')';
     }
     document.getElementById('heroH1').innerHTML = `${dict.heroTitlePre} <span>${dict.heroTitleSpan}</span>`;
     document.getElementById('heroP').textContent = dict.heroSub;
@@ -831,6 +896,9 @@ function renderRecommendations() {
                         <span class="crowd-label" style="color:${crowd.color}">${crowdLabel} (${crowd.percent}%)</span>
                     </div>
                     <div class="crowd-track"><div class="crowd-fill" style="width:${crowd.percent}%;background:${crowd.color}"></div></div>
+                    <div class="crowd-explain" style="font-size:0.75rem; color:var(--muted); margin-top:0.4rem; line-height: 1.3;">
+                        <i class="fa-solid fa-circle-info" style="color:var(--accent);"></i> ${crowd.explanation}
+                    </div>
                 </div>
                 <div class="card-actions">
                     <a href="${mapUrl}" target="_blank" class="dir-btn" data-dir-cat="${p.cat}">
@@ -935,13 +1003,17 @@ if (costCalcForm) {
             
             if (data.success) {
                 // Format as Indian Rupee
-                const formattedCost = new Intl.NumberFormat('en-IN', {
+                const formatInr = (val) => new Intl.NumberFormat('en-IN', {
                     style: 'currency',
                     currency: 'INR',
                     maximumFractionDigits: 0
-                }).format(data.predicted_cost);
+                }).format(val);
                 
-                calcResultVal.textContent = formattedCost;
+                document.getElementById('calcResultVal').textContent = formatInr(data.predicted_cost);
+                document.getElementById('calcConfidence').textContent = `Confidence Band: ${formatInr(data.confidence_band[0])} - ${formatInr(data.confidence_band[1])}`;
+                document.getElementById('calcFactors').textContent = data.factors_text;
+                document.getElementById('calcTip').textContent = data.tip_text;
+                
                 calcResult.style.display = 'block';
             } else {
                 alert("Error: " + (data.error || "Unknown error occurred"));
@@ -1075,6 +1147,10 @@ function renderTripPanel() {
     let mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
     if (middle) mapsUrl += `&waypoints=${middle}`;
     document.getElementById('tripMapsLink').href = mapsUrl;
+    
+    // Clear discoveries if they exist and route changed
+    const tripDiscoveries = document.getElementById('tripDiscoveries');
+    if (tripDiscoveries) tripDiscoveries.innerHTML = '';
 }
 
 document.getElementById('tripOptimize').addEventListener('click', () => {
@@ -1087,6 +1163,108 @@ document.getElementById('tripOptimize').addEventListener('click', () => {
     btn.textContent = '✓ Route Optimized!';
     setTimeout(() => { btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Optimize Route'; }, 1500);
 });
+
+// Route-Aware Discovery Logic
+function pointToLineDistance(px, py, x1, y1, x2, y2) {
+    const A = px - x1;
+    const B = py - y1;
+    const C = x2 - x1;
+    const D = y2 - y1;
+
+    const dot = A * C + B * D;
+    const len_sq = C * C + D * D;
+    let param = -1;
+    if (len_sq != 0) param = dot / len_sq;
+
+    let xx, yy;
+    if (param < 0) { xx = x1; yy = y1; }
+    else if (param > 1) { xx = x2; yy = y2; }
+    else { xx = x1 + param * C; yy = y1 + param * D; }
+
+    const dx = px - xx;
+    const dy = py - yy;
+    
+    // Approximate degree to km
+    const midLat = (y1 + y2) / 2;
+    const dxKm = dx * 111 * Math.cos(midLat * Math.PI / 180);
+    const dyKm = dy * 111;
+    return Math.sqrt(dxKm * dxKm + dyKm * dyKm);
+}
+
+document.getElementById('tripDiscover').addEventListener('click', () => {
+    if (tripPlaces.length < 2) { alert('Add at least 2 places to discover stops along your route!'); return; }
+    
+    const container = document.getElementById('tripDiscoveries');
+    container.innerHTML = '<p style="text-align:center; color:var(--muted); font-size:0.85rem;">Searching along route...</p>';
+    
+    setTimeout(() => {
+        let suggested = [];
+        // Check each discovery point against all route segments
+        enRouteDiscoveries.forEach(disc => {
+            // Don't suggest if already added
+            if (tripPlaces.some(tp => tp.title === disc.title)) return;
+            
+            let minDistance = Infinity;
+            for (let i = 0; i < tripPlaces.length - 1; i++) {
+                const stopA = tripPlaces[i];
+                const stopB = tripPlaces[i+1];
+                // Note: pointToLineDistance(lng, lat, lng1, lat1, lng2, lat2)
+                const dist = pointToLineDistance(disc.lng, disc.lat, stopA.lng, stopA.lat, stopB.lng, stopB.lat);
+                if (dist < minDistance) minDistance = dist;
+            }
+            
+            // 8 km max detour radius
+            if (minDistance <= 8) {
+                suggested.push({ ...disc, distance: minDistance });
+            }
+        });
+        
+        if (suggested.length === 0) {
+            container.innerHTML = '<p style="text-align:center; color:var(--muted); font-size:0.85rem;">No new stops found within 8km of your route.</p>';
+            return;
+        }
+        
+        // Sort by distance (closest to route first)
+        suggested.sort((a, b) => a.distance - b.distance);
+        
+        container.innerHTML = `<h4 style="font-size:0.9rem; margin-bottom:10px; color:var(--text);"><i class="fa-solid fa-sparkles" style="color:#F59E0B;"></i> Suggested Detours</h4>` + 
+            suggested.map(s => `
+            <div class="discovery-card">
+                <div class="discovery-icon"><i class="fa-solid ${s.icon}"></i></div>
+                <div class="discovery-info">
+                    <div class="discovery-title">${s.title}</div>
+                    <div class="discovery-type">${s.type} • +${s.distance.toFixed(1)} km detour</div>
+                </div>
+                <button class="discovery-add" title="Add to Route" data-add-title="${s.title}" data-lat="${s.lat}" data-lng="${s.lng}">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            `).join('');
+    }, 500); // Small artificial delay for effect
+});
+
+document.getElementById('tripDiscoveries').addEventListener('click', (e) => {
+    const addBtn = e.target.closest('.discovery-add');
+    if (addBtn) {
+        const title = addBtn.dataset.addTitle;
+        const lat = parseFloat(addBtn.dataset.lat);
+        const lng = parseFloat(addBtn.dataset.lng);
+        
+        tripPlaces.push({ title, lat, lng, cat: 'discovery', icon: 'fa-location-dot' });
+        localStorage.setItem('tripPlaces', JSON.stringify(tripPlaces));
+        
+        // Optimize automatically to slot it in
+        const result = optimizeRoute(tripPlaces);
+        tripPlaces = result.order;
+        localStorage.setItem('tripPlaces', JSON.stringify(tripPlaces));
+        
+        renderTripPanel();
+        
+        // Remove from suggestions visually
+        addBtn.closest('.discovery-card').remove();
+    }
+});
+
 
 tripBody.addEventListener('click', (e) => {
     const removeBtn = e.target.closest('.trip-item-remove');

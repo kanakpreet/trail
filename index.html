@@ -314,8 +314,10 @@
                 <span id="tripStops"><i class="fa-solid fa-location-dot"></i> 0 stops</span>
             </div>
             <button id="tripOptimize" class="btn-solid" style="margin-top:.6rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> Optimize Route</button>
+            <button id="tripDiscover" class="btn-outline" style="margin-top:.5rem;"><i class="fa-solid fa-compass"></i> Discover Stops Along Route</button>
             <button id="openCostCalc" class="btn-outline" style="margin-top:.5rem; width:100%; border-color:var(--accent); color:var(--accent);"><i class="fa-solid fa-calculator"></i> Estimate Trip Cost</button>
             <a id="tripMapsLink" href="#" target="_blank" class="dir-btn" style="margin-top:.5rem;"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
+            <div id="tripDiscoveries" style="margin-top: 1rem;"></div>
         </div>
     </div>
 
@@ -365,9 +367,22 @@
                 <button type="submit" id="calcSubmitBtn" class="btn-solid">Calculate Estimate</button>
             </form>
             
-            <div id="calcResult" style="display:none; margin-top:20px; text-align:center; padding:15px; background:rgba(42,89,52,0.1); border-radius:8px; border:1px solid rgba(42,89,52,0.3);">
-                <span style="font-size:0.9rem; color:var(--text-light);">Estimated Total Cost</span>
-                <h3 id="calcResultVal" style="color:var(--primary); font-size:1.8rem; margin:5px 0;"></h3>
+            <div id="calcResult" style="display:none; margin-top:20px; text-align:left; padding:15px; background:var(--surface); border-radius:8px; border:1px solid var(--border); box-shadow: var(--shadow-soft);">
+                <div style="text-align:center; margin-bottom: 15px;">
+                    <span style="font-size:0.9rem; color:var(--muted);">Estimated Total Cost</span>
+                    <h3 id="calcResultVal" style="color:var(--primary); font-size:1.8rem; margin:5px 0;"></h3>
+                    <span id="calcConfidence" style="font-size:0.8rem; color:var(--muted);"></span>
+                </div>
+                
+                <div class="xai-section">
+                    <h4 style="font-size:0.95rem; color:var(--text); margin-bottom: 8px;"><i class="fa-solid fa-chart-pie" style="color:var(--accent);"></i> Top Contributing Factors</h4>
+                    <p id="calcFactors" style="font-size:0.85rem; color:var(--muted); line-height:1.5;"></p>
+                </div>
+                
+                <div class="xai-section" style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border);">
+                    <h4 style="font-size:0.95rem; color:var(--text); margin-bottom: 8px;"><i class="fa-solid fa-lightbulb" style="color:#F59E0B;"></i> Cost Reduction Tip</h4>
+                    <p id="calcTip" style="font-size:0.85rem; color:var(--muted); line-height:1.5;"></p>
+                </div>
             </div>
         </div>
     </div>
