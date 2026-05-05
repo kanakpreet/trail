@@ -94,6 +94,20 @@
         </div>
     </div>
 
+    <!-- Package Details Modal -->
+    <div id="packageModal" class="modal-overlay">
+        <div class="modal-box glassmorphic-modal">
+            <button class="modal-close" id="packageModalClose">&times;</button>
+            <h2 id="packageModalTitle">Package Details</h2>
+            <div id="packageModalImg" style="height: 200px; border-radius: 8px; margin-bottom: 1rem; background-size: cover; background-position: center; margin-top: 1rem;"></div>
+            <p id="packageModalDesc" style="margin-bottom: 1rem; color: var(--text); line-height: 1.5;"></p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                <span id="packageModalPrice" style="font-size: 1.5rem; font-weight: bold; color: var(--primary);"></span>
+                <button class="btn-solid" onclick="alert('Booking functionality coming soon!')">Book Now</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-bg" style="background-image: url('images/hero.png');"></div>
@@ -198,7 +212,7 @@
                     <p>A 12-day spiritual journey through Kedarnath, Badrinath, Gangotri, and Yamunotri.</p>
                     <div class="pkg-footer">
                         <span class="pkg-price">₹45,000</span>
-                        <button class="btn-outline-primary">View Details</button>
+                        <button class="btn-outline-primary pkg-detail-btn" data-title="Char Dham Yatra" data-desc="A 12-day spiritual journey through Kedarnath, Badrinath, Gangotri, and Yamunotri. Includes premium accommodation, pure vegetarian meals, and guided VIP darshan." data-price="₹45,000" data-img="images/temple.png">View Details</button>
                     </div>
                 </div>
             </div>
@@ -210,7 +224,7 @@
                     <p>3 days of thrilling wildlife safaris in India's oldest national park.</p>
                     <div class="pkg-footer">
                         <span class="pkg-price">₹15,000</span>
-                        <button class="btn-outline-primary">View Details</button>
+                        <button class="btn-outline-primary pkg-detail-btn" data-title="Jim Corbett Safari" data-desc="3 days of thrilling wildlife safaris in India's oldest national park. Includes jungle resort stay, 2 guided jeep safaris, and all meals." data-price="₹15,000" data-img="images/safari.png">View Details</button>
                     </div>
                 </div>
             </div>
@@ -222,7 +236,7 @@
                     <p>Experience the ultimate ski holiday in the pristine slopes of Auli.</p>
                     <div class="pkg-footer">
                         <span class="pkg-price">₹22,000</span>
-                        <button class="btn-outline-primary">View Details</button>
+                        <button class="btn-outline-primary pkg-detail-btn" data-title="Auli Snow Retreat" data-desc="Experience the ultimate ski holiday in the pristine slopes of Auli. Includes ropeway tickets, skiing equipment rental, instructor, and a cozy bonfire evening." data-price="₹22,000" data-img="images/auli.png">View Details</button>
                     </div>
                 </div>
             </div>

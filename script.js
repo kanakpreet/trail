@@ -1314,3 +1314,42 @@ gridObserver.observe(grid, { childList: true });
 
 renderTripPanel();
 
+/* ═══════════════════════════════════════
+   Package Details Modal Logic
+   ═══════════════════════════════════════ */
+const packageModal = document.getElementById('packageModal');
+const packageModalClose = document.getElementById('packageModalClose');
+const packageModalTitle = document.getElementById('packageModalTitle');
+const packageModalImg = document.getElementById('packageModalImg');
+const packageModalDesc = document.getElementById('packageModalDesc');
+const packageModalPrice = document.getElementById('packageModalPrice');
+
+document.querySelectorAll('.pkg-detail-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const title = e.target.getAttribute('data-title');
+        const desc = e.target.getAttribute('data-desc');
+        const price = e.target.getAttribute('data-price');
+        const img = e.target.getAttribute('data-img');
+        
+        if (packageModalTitle) packageModalTitle.textContent = title;
+        if (packageModalDesc) packageModalDesc.textContent = desc;
+        if (packageModalPrice) packageModalPrice.textContent = price;
+        if (packageModalImg) packageModalImg.style.backgroundImage = `url('${img}')`;
+        
+        if (packageModal) packageModal.classList.add('show');
+    });
+});
+
+if (packageModalClose) {
+    packageModalClose.addEventListener('click', () => {
+        packageModal.classList.remove('show');
+    });
+}
+
+if (packageModal) {
+    packageModal.addEventListener('click', (e) => {
+        if (e.target === packageModal) {
+            packageModal.classList.remove('show');
+        }
+    });
+}
