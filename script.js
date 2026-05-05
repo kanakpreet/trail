@@ -385,12 +385,28 @@ function render(selectedCats) {
                     </div>
                 </div>
 
-                <!-- Local Guide -->
-                <div class="guide-info">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <div>
-                        <span class="guide-name">${p.guide}</span>
-                        <a href="tel:${p.guidePhone}" class="guide-phone">${p.guidePhone}</a>
+                <!-- Local Guides -->
+                <div class="guides-container" style="display:flex; flex-direction:column; gap:8px;">
+                    <div class="guide-info">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <div>
+                            <span class="guide-name">${p.guide}</span>
+                            <a href="tel:${p.guidePhone}" class="guide-phone">${p.guidePhone}</a>
+                        </div>
+                    </div>
+                    <div class="guide-info">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <div>
+                            <span class="guide-name">${p.guide.split(' ')[0]} Kumar</span>
+                            <a href="tel:+919999900001" class="guide-phone">+91 99999 00001</a>
+                        </div>
+                    </div>
+                    <div class="guide-info">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <div>
+                            <span class="guide-name">Amit ${p.guide.split(' ')[1] || 'Singh'}</span>
+                            <a href="tel:+919999900002" class="guide-phone">+91 99999 00002</a>
+                        </div>
                     </div>
                 </div>
 
@@ -444,6 +460,31 @@ document.querySelectorAll('.category-card').forEach(card => {
 
 // Initial render (will be empty until DB loads)
 render(getSelected());
+
+// Search Bar Logic
+const mainSearchBtn = document.getElementById('mainSearchBtn');
+if (mainSearchBtn) {
+    mainSearchBtn.addEventListener('click', () => {
+        const dest = document.getElementById('searchDest').value.toLowerCase();
+        if (!dest) {
+            alert('Please enter a destination.');
+            return;
+        }
+        
+        const dataToRender = placesData.length > 0 ? placesData : places;
+        const match = dataToRender.find(p => p.title.toLowerCase().includes(dest) || p.desc.toLowerCase().includes(dest));
+        
+        if (match) {
+            checkboxes.forEach(cb => {
+                cb.checked = (cb.value === match.cat);
+            });
+            render(getSelected());
+            document.getElementById('explore').scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert('No matching destination found. Please try another search.');
+        }
+    });
+}
 
 // Refresh crowd levels every 30 seconds
 setInterval(() => render(getSelected()), 30000);
@@ -916,16 +957,6 @@ function renderRecommendations() {
 const chatToggle = document.getElementById('chatToggle');
 // chatWindow already declared above
 const chatClose = document.getElementById('chatClose');
-
-if (chatToggle && chatWindow) {
-    chatToggle.addEventListener('click', () => {
-        chatWindow.classList.toggle('hide');
-    });
-    chatClose.addEventListener('click', () => {
-        chatWindow.classList.add('hide');
-    });
-}
-
 const tripToggleBtn = document.getElementById('tripToggle');
 const tripPanel = document.getElementById('tripPanel');
 const tripCloseBtn = document.getElementById('tripClose');
